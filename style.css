@@ -612,6 +612,7 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 768px) {
+  .nav-actions { margin-left: auto; }
   .nav-links {
     position: fixed; top: var(--nav-h); left: 0; right: 0;
     background: var(--bg); border-bottom: 1px solid var(--border);
