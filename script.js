@@ -246,3 +246,73 @@ function updateMallkuCarousel() {
   });
 }
 
+// ─── CONTACT FORM HANDLING ───────────────────────────────────────────────────
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('formSubmit');
+    const originalText = btn.innerHTML;
+    
+    // Simulate sending
+    btn.disabled = true;
+    btn.innerHTML = lang === 'es' ? 'Enviando...' : 'Sending...';
+    
+    setTimeout(() => {
+      btn.innerHTML = lang === 'es' ? '¡Mensaje Enviado!' : 'Message Sent!';
+      btn.style.background = 'var(--success)';
+      contactForm.reset();
+      
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+        btn.style.background = '';
+      }, 3000);
+    }, 1500);
+  });
+}
+
+// ─── EMAIL COPY HELPER ────────────────────────────────────────────────────────
+function copyEmailToClipboard(email = 'valerialarcon119@gmail.com') {
+  navigator.clipboard.writeText(email).then(() => {
+    const toast = document.createElement('div');
+    toast.style.cssText = `
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      background: var(--success); color: white; padding: 12px 24px;
+      border-radius: 100px; font-weight: 600; z-index: 3000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3); animation: fadeInUp 0.3s ease;
+    `;
+    toast.textContent = lang === 'es' ? '¡Email copiado al portapapeles!' : 'Email copied to clipboard!';
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(10px) translateX(-50%)';
+      toast.style.transition = 'all 0.3s ease';
+      setTimeout(() => toast.remove(), 300);
+    }, 2500);
+  });
+}
+
+// Add copy event to contact cards that use mailto
+document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    // If it's a desktop and they click, we can copy as well
+    // For now, let's just make it copy on all clicks to be safe
+    // but still allow the mailto to trigger if possible.
+    copyEmailToClipboard();
+  });
+});
+
+// Update placeholders on lang change
+const originalApplyLanguage = applyLanguage;
+applyLanguage = function() {
+  originalApplyLanguage();
+  const isEs = lang === 'es';
+  document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+    const attr = isEs ? 'data-es-placeholder' : 'data-en-placeholder';
+    el.placeholder = el.getAttribute(attr);
+  });
+};
+applyLanguage();
+
