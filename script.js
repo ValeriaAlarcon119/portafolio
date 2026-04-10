@@ -87,7 +87,31 @@ langToggle.addEventListener('click', () => {
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 20);
+  
+  // Scroll Progress
+  const scrollProgress = document.getElementById('scrollProgress');
+  if (scrollProgress) {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    scrollProgress.style.width = scrolled + "%";
+  }
 });
+
+// ─── PARALLAX ORBS ────────────────────────────────────────────────────────────
+document.addEventListener('mousemove', (e) => {
+  const orbs = document.querySelectorAll('.orb');
+  const x = e.clientX / window.innerWidth;
+  const y = e.clientY / window.innerHeight;
+  
+  orbs.forEach((orb, i) => {
+    const speed = (i + 1) * 20;
+    const offsetX = (x - 0.5) * speed;
+    const offsetY = (y - 0.5) * speed;
+    orb.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+  });
+});
+
 
 // ─── HAMBURGER MENU ───────────────────────────────────────────────────────────
 const hamburger = document.getElementById('hamburger');
@@ -125,27 +149,49 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.project-card, .info-card, .skill-category, .timeline-item, .contact-card').forEach(el => {
+document.querySelectorAll('.project-card, .info-card, .skill-category, .timeline-item, .contact-card').forEach((el, index) => {
   el.style.opacity = '0';
-  el.style.transform = 'translateY(30px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  el.style.transform = 'translateY(40px)';
+  el.style.transition = `opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)`;
+  el.style.transitionDelay = `${(index % 3) * 0.1}s`;
   revealObserver.observe(el);
 });
+
+// ─── CARD SPOTLIGHT EFFECT ──────────────────────────────────────────────────
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
+});
+
 
 // ─── PROJECT IMAGE LOADING STATE ──────────────────────────────────────────────
 // Images come from thum.io live screenshots — show a loading shimmer while they load
 document.querySelectorAll('.project-img').forEach((img) => {
   img.style.opacity = '0';
   img.style.transition = 'opacity 0.6s ease';
-  img.addEventListener('load', function () {
-    this.style.opacity = '1';
-  });
-  img.addEventListener('error', function () {
-    // If screenshot service fails, show a minimal placeholder
-    this.parentElement.style.background = 'linear-gradient(135deg, var(--bg-alt), var(--bg-card))';
-    this.style.display = 'none';
-  });
+  
+  const handleLoad = () => { img.style.opacity = '1'; };
+  
+  if (img.complete) {
+    handleLoad();
+  } else {
+    img.addEventListener('load', handleLoad);
+    img.addEventListener('error', function () {
+      this.parentElement.style.background = 'linear-gradient(135deg, var(--bg-alt), var(--bg-card))';
+      this.style.display = 'none';
+      const placeholder = document.createElement('div');
+      placeholder.className = 'project-img-placeholder';
+      placeholder.innerHTML = '<span>&lt;/&gt;</span>';
+      this.parentElement.appendChild(placeholder);
+    });
+  }
 });
+
 
 // ─── COUNTER ANIMATION ────────────────────────────────────────────────────────
 function animateCounter(el, target, duration = 1500) {
@@ -249,28 +295,58 @@ function updateMallkuCarousel() {
 // ─── CONTACT FORM HANDLING ───────────────────────────────────────────────────
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('formSubmit');
     const originalText = btn.innerHTML;
     
-    // Simulate sending
+    // Get Form Data
+    const name = document.getElementById('form-name').value;
+    const email = document.getElementById('form-email').value;
+    const message = document.getElementById('form-message').value;
+
+    // 1. Construct WhatsApp Message and Open
+    const waPhone = "+573017219288";
+    const waText = encodeURIComponent(`Hola Valeria! Mi nombre es ${name} (${email}).\n\nTe escribo por: ${message}`);
+    const waUrl = `https://wa.me/${waPhone}?text=${waText}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(waUrl, '_blank');
+
+    // 2. Submit to Formspree (Email) in background
     btn.disabled = true;
     btn.innerHTML = lang === 'es' ? 'Enviando...' : 'Sending...';
+
+    const formData = new FormData(contactForm);
     
-    setTimeout(() => {
-      btn.innerHTML = lang === 'es' ? '¡Mensaje Enviado!' : 'Message Sent!';
-      btn.style.background = 'var(--success)';
-      contactForm.reset();
-      
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        btn.innerHTML = lang === 'es' ? '¡Mensaje Enviado!' : 'Message Sent!';
+        btn.style.background = 'var(--success)';
+        contactForm.reset();
+      } else {
+        throw new Error('Formspree error');
+      }
+    } catch (error) {
+      // Fallback if fetch fails (e.g. adblocker)
+      btn.innerHTML = lang === 'es' ? 'Error al enviar' : 'Error sending';
+      btn.style.background = 'var(--accent2)';
+    } finally {
       setTimeout(() => {
         btn.disabled = false;
         btn.innerHTML = originalText;
         btn.style.background = '';
-      }, 3000);
-    }, 1500);
+      }, 4000);
+    }
   });
 }
+
 
 // ─── EMAIL COPY HELPER ────────────────────────────────────────────────────────
 function copyEmailToClipboard(email = 'valerialarcon119@gmail.com') {

@@ -20,6 +20,7 @@
 <body>
 
   <!-- ===== NAVBAR ===== -->
+  <div class="scroll-progress-bar" id="scrollProgress"></div>
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#hero" class="nav-logo">
@@ -67,6 +68,7 @@
       <div class="orb orb-2"></div>
       <div class="orb orb-3"></div>
       <div class="grid-overlay"></div>
+      <div class="spotlight"></div>
     </div>
     <div class="hero-content">
       <div class="hero-badge">
@@ -86,11 +88,11 @@
         data-en="Systems Engineer from Universidad de Nariño. I design and build premium digital experiences — from robust APIs to stunning interfaces, always with clean code and pixel-perfect attention to detail."
         data-es="Ingeniera de Sistemas de la Universidad de Nariño. Diseño y construyo experiencias digitales premium — desde APIs robustas hasta interfaces impactantes, siempre con código limpio y atención al detalle.">
         Systems Engineer from Universidad de Nariño. I design and build premium digital experiences — from robust APIs
-        to stunning interfaces, siempre con código limpio y atención al detalle.
+        to stunning interfaces, always with clean code and pixel-perfect attention to detail.
       </p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary" data-en="View my work" data-es="Ver mis proyectos">View my work</a>
-        <a href="#contact" class="btn btn-ghost" data-en="Contact me" data-es="Contáctame">Contact me</a>
+        <a href="javascript:window.print()" class="btn btn-ghost" data-en="Download Resume" data-es="Descargar CV">Download Resume</a>
       </div>
       <div class="hero-stats">
         <div class="stat-item">
@@ -129,11 +131,11 @@
             I'm a Systems Engineer from Universidad de Nariño (Pasto, Nariño, Colombia), passionate about creating
             digital solutions that merge technical excellence with outstanding user experiences.
           </p>
-          <p data-en="I specialize in full-stack development — building everything from RESTful APIs with Laravel and NestJS, to interactive SPAs with Angular and React. I believe that great software is as much about clean architecture as it is about beautiful design."
-            data-es="Me especializo en desarrollo full-stack — construyendo desde APIs RESTful con Laravel y NestJS, hasta SPAs interactivas con Angular y React. Creo que el buen software es tanto arquitectura limpia como diseño hermoso.">
-            I specialize in full-stack development — building everything from RESTful APIs with Laravel and NestJS, to
-            interactive SPAs with Angular and React. I believe that great software is as much about clean architecture
-            as it is about beautiful design.
+          <p data-en="I specialize in full-stack development — building everything from robust and scalable RESTful APIs to interactive and dynamic user-centric interfaces. I believe that great software is as much about clean architecture as it is about beautiful design."
+            data-es="Me especializo en desarrollo full-stack — construyendo desde APIs robustas y escalables, hasta interfaces interactivas y dinámicas enfocadas en el usuario. Creo que el buen software es tanto arquitectura limpia como diseño hermoso.">
+            I specialize in full-stack development — building everything from robust and scalable RESTful APIs to
+            interactive and dynamic user-centric interfaces. I believe that great software is as much about clean
+            architecture as it is about beautiful design.
           </p>
           <p data-en="My projects span e-commerce platforms, SaaS dashboards, AI-integrated systems, and real estate solutions — all deployed and running in production."
             data-es="Mis proyectos abarcan plataformas e-commerce, dashboards SaaS, sistemas con IA integrada y soluciones inmobiliarias — todos desplegados y corriendo en producción.">
@@ -287,6 +289,10 @@
 
   <!-- ===== PROJECTS ===== -->
   <section class="section" id="projects">
+    <div class="projects-bg">
+      <div class="spotlight spotlight-1"></div>
+      <div class="spotlight spotlight-2"></div>
+    </div>
     <div class="container">
       <div class="section-header">
         <span class="section-tag" data-en="What I've built" data-es="Lo que he construido">What I've built</span>
@@ -294,10 +300,46 @@
       </div>
       <div class="projects-grid">
 
+        <!-- GESTIÓN DE PELÍCULAS -->
+        <article class="project-card project-featured" id="proj-pelicula-elite">
+          <div class="project-img-wrap">
+            <img src="projects/cineflow.png" alt="Gestión de Películas" class="project-img">
+            <div class="project-overlay">
+              <a href="https://valeriaalarcon119.github.io/PruebaConocimiento" target="_blank" class="overlay-btn"
+                data-en="Live Demo" data-es="Ver en vivo">Live Demo</a>
+            </div>
+            <span class="project-badge badge-live">✦ Live</span>
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="project-type" data-en="EliteStream Pro v2.0 — Cinematic Ecosystem"
+                data-es="EliteStream Pro v2.0 — Ecosistema Cinematográfico">EliteStream Pro v2.0 — Cinematic Ecosystem</span>
+              <span class="project-year">2026</span>
+            </div>
+            <h3 class="project-title">Gestión de Películas</h3>
+            <p class="project-desc"
+              data-en="High-performance cinematic management hub (EliteStream Pro). Features interactive 3D cards with parallax effects, physical animation cascading, and real-time news tickers. Connects dynamically with TMDb Intelligence for multi-language biographies and production metadata. Implements a robust security layer with ProtectedRoutes, token management, and 'Demo Mode' for quick evaluation."
+              data-es="Ecosistema de gestión cinematográfica de alto rendimiento (EliteStream Pro). Incluye tarjetas 3D interactivas con efectos parallax, cascada de animaciones físicas y tickers de noticias en tiempo real. Conexión dinámica con TMDb Intelligence para metadatos de producción y biografías multi-idioma. Implementa seguridad robusta con ProtectedRoutes, gestión de tokens y 'Demo Mode' para evaluación rápida.">
+              High-performance cinematic management hub (EliteStream Pro). Features interactive 3D cards with parallax
+              effects, cascading physical animations, and real-time news tickers. Deep TMDb Intelligence integration for
+              global metadata. Robust security with ProtectedRoutes and token management.
+            </p>
+            <div class="project-stack">
+              <span>React 18</span><span>Framer Motion</span><span>TMDb Intelligence</span><span>My JSON Server</span><span>Canvas Confetti</span><span>Lucide</span><span>Glassmorphism</span><span>Auth RBAC</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://valeriaalarcon119.github.io/PruebaConocimiento" target="_blank" class="btn btn-sm btn-primary"
+                data-en="🌐 Visit Site" data-es="🌐 Visitar">🌐 Visit Site</a>
+              <a href="https://github.com/ValeriaAlarcon119/PruebaConocimiento" target="_blank"
+                class="btn btn-sm btn-ghost">GitHub</a>
+            </div>
+          </div>
+        </article>
+
         <!-- MALLKU -->
         <article class="project-card project-featured" id="proj-mallku">
           <div class="project-img-wrap">
-            <div class="project-img-placeholder"><span>&lt;/&gt;</span></div>
+            <img src="projects/mallku.png" alt="Mallku Sentires Andinos" class="project-img">
             <div class="project-overlay">
               <a href="https://tienda-mallku.netlify.app" target="_blank" class="overlay-btn" data-en="Live Demo"
                 data-es="Ver en vivo">Live Demo</a>
@@ -334,7 +376,7 @@
         <!-- SOLEIA -->
         <article class="project-card project-featured" id="proj-soleia">
           <div class="project-img-wrap">
-            <div class="project-img-placeholder"><span>&lt;/&gt;</span></div>
+            <img src="projects/soleia.png" alt="Soleia Residencial" class="project-img">
             <div class="project-overlay">
               <a href="https://soleia.mx" target="_blank" class="overlay-btn" data-en="Live Demo"
                 data-es="Ver en vivo">Live Demo</a>
@@ -368,7 +410,7 @@
         <!-- GESTIÓN DESTINOS -->
         <article class="project-card" id="proj-destinos">
           <div class="project-img-wrap">
-            <div class="project-img-placeholder"><span>&lt;/&gt;</span></div>
+            <img src="projects/destinos.png" alt="Gestión Destinos Turísticos" class="project-img">
             <div class="project-overlay">
               <a href="https://gestiondestinosturisticos.netlify.app" target="_blank" class="overlay-btn"
                 data-en="Live Demo" data-es="Ver en vivo">Live Demo</a>
@@ -404,7 +446,7 @@
         <!-- GRAYOLA -->
         <article class="project-card" id="proj-grayola">
           <div class="project-img-wrap">
-            <div class="project-img-placeholder"><span>&lt;/&gt;</span></div>
+            <img src="projects/grayola.png" alt="Grayola" class="project-img">
             <div class="project-overlay">
               <a href="https://grayola.netlify.app" target="_blank" class="overlay-btn" data-en="Live Demo"
                 data-es="Ver en vivo">Live Demo</a>
@@ -438,7 +480,7 @@
         <!-- LEVJ -->
         <article class="project-card" id="proj-levj">
           <div class="project-img-wrap">
-            <div class="project-img-placeholder"><span>&lt;/&gt;</span></div>
+            <img src="projects/levj.png" alt="LEVJ" class="project-img">
             <div class="project-overlay">
               <a href="https://levj.netlify.app" target="_blank" class="overlay-btn" data-en="Live Demo"
                 data-es="Ver en vivo">Live Demo</a>
@@ -474,7 +516,7 @@
         <!-- GESTIÓN SOLICITUDES -->
         <article class="project-card" id="proj-solicitudes">
           <div class="project-img-wrap">
-            <div class="project-img-placeholder"><span>&lt;/&gt;</span></div>
+            <img src="projects/solicitudes.png" alt="Gestión Solicitudes" class="project-img">
             <div class="project-overlay">
               <a href="https://github.com/ValeriaAlarcon119/GestionSolicitudesEspecializacion" target="_blank"
                 class="overlay-btn" data-en="View Code" data-es="Ver Código">View Code</a>
@@ -508,7 +550,7 @@
         <!-- LEMARJ -->
         <article class="project-card" id="proj-lemarj">
           <div class="project-img-wrap">
-            <div class="project-img-placeholder"><span>&lt;/&gt;</span></div>
+            <img src="projects/lemarj.png" alt="LEMARJ" class="project-img">
             <div class="project-overlay">
               <a href="https://lemarj.netlify.app" target="_blank" class="overlay-btn" data-en="Live Demo"
                 data-es="Ver en vivo">Live Demo</a>
@@ -540,39 +582,7 @@
           </div>
         </article>
 
-        <!-- CINEFLOW -->
-        <article class="project-card" id="proj-cineflow">
-          <div class="project-img-wrap">
-            <div class="project-img-placeholder"><span>&lt;/&gt;</span></div>
-            <div class="project-overlay">
-              <a href="https://github.com/ValeriaAlarcon119/PruebaConocimiento" target="_blank" class="overlay-btn"
-                data-en="View Code" data-es="Ver Código">View Code</a>
-            </div>
-            <span class="project-badge badge-github">⚙ Code</span>
-          </div>
-          <div class="project-info">
-            <div class="project-meta">
-              <span class="project-type" data-en="AI-Powered Movie Manager"
-                data-es="Gestor de Películas con IA">AI-Powered Movie Manager</span>
-              <span class="project-year">2026</span>
-            </div>
-            <h3 class="project-title">CineFlow Pro</h3>
-            <p class="project-desc"
-              data-en="Full-stack movie catalog management with TMDb API integration for real posters, trailers and reviews. AI assistant for generating optimized movie descriptions. React.js frontend with glassmorphism UI, JSON Server backend, and complete CRUD for movies, directors, actors and genres."
-              data-es="Gestión full-stack de catálogo cinematográfico con integración TMDb para portadas, trailers y reseñas reales. Asistente IA para generación de reseñas optimizadas. Frontend React.js con UI glassmorphism, backend JSON Server y CRUD completo.">
-              Full-stack movie catalog management integrating TMDb API for real posters/trailers. AI assistant for
-              review generation. React.js glassmorphism UI with complete CRUD for movies, directors, and actors.
-            </p>
-            <div class="project-stack">
-              <span>React.js</span><span>TMDb API</span><span>AI Integration</span><span>JSON
-                Server</span><span>CSS3</span>
-            </div>
-            <div class="project-actions">
-              <a href="https://github.com/ValeriaAlarcon119/PruebaConocimiento" target="_blank"
-                class="btn btn-sm btn-primary">GitHub</a>
-            </div>
-          </div>
-        </article>
+
 
       </div>
     </div>
@@ -602,16 +612,101 @@
               dashboards, real estate landing pages, and artisan stores.
             </p>
             <div class="timeline-tags">
-              <span>Angular</span><span>Laravel</span><span>React</span><span>Node.js</span><span>NestJS</span></div>
+              <span>React 19</span><span>Angular 17</span><span>Laravel 11</span><span>Node.js</span><span>Supabase</span></div>
           </div>
         </div>
+
+        <!-- Professional: Grayola -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="timeline-year">2025</span>
+            </div>
+            <h4 data-en="Full-Stack Developer — Grayola (AI Startup)"
+              data-es="Desarrolladora Full-Stack — Grayola (AI Startup)">
+              Full-Stack Developer — Grayola (AI Startup)</h4>
+            <p
+              data-en="Developed a design management ecosystem following Clean Architecture. Implemented role-based workspaces, complex design request flows, and automated designer-client matching."
+              data-es="Desarrollo de ecosistema de gestión de diseño siguiendo Clean Architecture. Implementación de workspaces, flujos de solicitudes complejos y matching automatizado diseñador-cliente.">
+              Developed a design management ecosystem following Clean Architecture. Implemented role-based workspaces,
+              complex design request flows, and automated designer-client matching.
+            </p>
+            <div class="timeline-tags">
+              <span>Next.js</span><span>NestJS</span><span>PostgreSQL</span><span>Docker</span><span>Stripe</span></div>
+          </div>
+        </div>
+
+        <!-- Professional: Black & Orange -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="timeline-year">2024</span>
+            </div>
+            <h4 data-en="Backend Developer — Black & Orange" data-es="Desarrolladora Backend — Black & Orange">
+              Backend Developer — Black & Orange</h4>
+            <p
+              data-en="Engineered scalable backend services by orchestrating multiple external REST APIs with the HubSpot ecosystem. Designed high-performance endpoints for business process automation and complex data management across cloud environments."
+              data-es="Orquestación de servicios backend escalables integrando múltiples APIs REST externas con el ecosistema de HubSpot. Diseño y construcción de endpoints de alto rendimiento para automatización de procesos y gestión de datos complejos.">
+              Engineered scalable backend services by orchestrating multiple external REST APIs with the HubSpot
+              ecosystem. Designed high-performance endpoints for business process automation and complex data
+              management.
+            </p>
+            <div class="timeline-tags">
+              <span>Node.js</span><span>REST APIs</span><span>Express</span><span>AWS</span><span>Hubspot API</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Professional: SIIAN ERP -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="timeline-year">2024</span>
+            </div>
+            <h4 data-en="Full-Stack Developer — SIIAN ERP" data-es="Desarrolladora Full-Stack — SIIAN ERP">
+              Full-Stack Developer — SIIAN ERP</h4>
+            <p
+              data-en="Built core financial and logistics modules for a comprehensive enterprise ERP. Automated deployment pipelines and maintained robust RESTful services for high-traffic operations."
+              data-es="Construcción de módulos financieros y logísticos para un ERP empresarial. Automatización de pipelines de despliegue y mantenimiento de servicios RESTful robustos.">
+              Built core financial and logistics modules for a comprehensive enterprise ERP. Automated deployment
+              pipelines and maintained robust RESTful services for high-traffic operations.
+            </p>
+            <div class="timeline-tags">
+              <span>ASP.NET Core</span><span>C#</span><span>Dapper</span><span>PostgreSQL</span><span>Azure DevOps</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Professional: TecnoPlanet -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="timeline-year">2023 – 2024</span>
+            </div>
+            <h4 data-en="Full-Stack Developer — TecnoPlanet" data-es="Desarrolladora Full-Stack — TecnoPlanet">
+              Full-Stack Developer — TecnoPlanet</h4>
+            <p
+              data-en="Developed web applications and backend services for workflow optimization. Created RESTful APIs across multiple stacks to support diverse client requirements."
+              data-es="Desarrollo de aplicaciones web y servicios backend para optimización de flujos de trabajo. Creación de APIs RESTful en diversos stacks para soportar requerimientos de clientes.">
+              Developed web applications and backend services for workflow optimization. Created RESTful APIs across
+              multiple stacks to support diverse client requirements.
+            </p>
+            <div class="timeline-tags">
+              <span>Angular</span><span>Laravel</span><span>Django</span><span>NestJS</span></div>
+          </div>
+        </div>
+
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-header">
               <span class="timeline-year">2020 – 2025</span>
             </div>
-            <h4 data-en="Systems Engineering Degree" data-es="Ingeniería de Sistemas">Systems Engineering Degree</h4>
+            <h4 data-en="Engineering Degree @ UDENAR" data-es="Ingeniería de Sistemas @ UDENAR">Systems Engineering Degree</h4>
             <p>Universidad de Nariño — Pasto, Nariño, Colombia</p>
             <p data-en="Specialized in software architecture, databases, web development, agile methodologies, and distributed systems. Built real-world projects throughout the program."
               data-es="Especialización en arquitectura de software, bases de datos, desarrollo web, metodologías ágiles y sistemas distribuidos. Proyectos reales durante toda la carrera.">
@@ -622,22 +717,44 @@
                 Engineering</span><span>Databases</span><span>Algorithms</span><span>Systems Design</span></div>
           </div>
         </div>
+        <!-- Education: Diplomado -->
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
+          <div class="timeline-dot" style="border-color: var(--accent); --glow: 0 0 20px rgba(6,182,212,0.3)"></div>
+          <div class="timeline-content" style="border-color: rgba(6,182,212,0.15)">
             <div class="timeline-header">
-              <span class="timeline-year">2023 – 2025</span>
+              <span class="timeline-year" style="color: var(--accent)">2025</span>
+              <span class="timeline-badge"
+                style="background: rgba(6,182,212,0.1); color: var(--accent); border-color: var(--accent)"
+                data-en="Certification" data-es="Certificación">Certification</span>
             </div>
-            <h4 data-en="Certifications & Continuous Learning" data-es="Certificaciones y Aprendizaje Continuo">
-              Certifications & Continuous Learning</h4>
-            <p data-en="Professional certifications in Full-Stack development, cloud technologies, agile frameworks, and modern web tools. Details and certificates available on LinkedIn."
-              data-es="Certificaciones profesionales en desarrollo Full-Stack, tecnologías cloud, frameworks ágiles y herramientas web modernas. Detalles y certificados disponibles en LinkedIn.">
-              Professional certifications in Full-Stack development, cloud technologies, and modern web tools.
+            <h4 data-en="Diploma in Advanced Software Development"
+              data-es="Diplomado en Desarrollo de Software Avanzado">
+              Diploma in Advanced Software Development</h4>
+            <p data-en="Specialized training at Universidad de Nariño covering modern full-stack workflows, scalable systems, and cloud deployment."
+              data-es="Capacitación especializada en la Universidad de Nariño cubriendo flujos full-stack modernos, sistemas escalables y despliegue cloud.">
+              Specialized training at Universidad de Nariño covering modern full-stack workflows, scalable systems, and cloud deployment.
             </p>
-            <div class="timeline-tags"><span>Full-Stack</span><span>Cloud</span><span>Agile</span><span>DevOps</span>
+          </div>
+        </div>
+
+        <!-- Education: English -->
+        <div class="timeline-item">
+          <div class="timeline-dot" style="border-color: var(--accent); --glow: 0 0 20px rgba(6,182,212,0.3)"></div>
+          <div class="timeline-content" style="border-color: rgba(6,182,212,0.15)">
+            <div class="timeline-header">
+              <span class="timeline-year" style="color: var(--accent)">2025</span>
+              <span class="timeline-badge"
+                style="background: rgba(6,182,212,0.1); color: var(--accent); border-color: var(--accent)"
+                data-en="Language" data-es="Idioma">Language</span>
             </div>
-            <a href="https://www.linkedin.com/in/valeria-alejandra-alarcon-andrade-543722221/" target="_blank"
-              class="btn btn-sm btn-ghost" style="margin-top:12px" data-en="View Certificates →"
+            <h4 data-en="Intermediate English (B1)" data-es="Inglés Intermedio (B1)">
+              Intermediate English (B1)</h4>
+            <p data-en="Evolve Your English — Professional communication and technical documentation. Proficiency in reading technical specs and collaborating in English-speaking environments."
+              data-es="Evolve Your English — Comunicación profesional y documentación técnica. Capacidad para leer especificaciones técnicas y colaborar en entornos de habla inglesa.">
+              Evolve Your English — Professional communication and technical documentation. Proficiency in reading technical specs and collaborating in English-speaking environments.
+            </p>
+            <a href="https://drive.google.com/file/d/1SpqRXr2haz2Wb54-74oqHtaWYYrJeIg5/view" target="_blank"
+              class="btn btn-sm btn-ghost" style="margin-top:12px; width: auto" data-en="View Certificates →"
               data-es="Ver Certificados →">View Certificates →</a>
           </div>
         </div>
@@ -660,29 +777,37 @@
       <div class="contact-grid">
         <div class="contact-cards">
           <a href="mailto:valerialarcon119@gmail.com" class="contact-card">
-            <div class="contact-icon">📧</div>
+            <div class="contact-icon" style="color: #ea4335;">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
             <div>
               <h4>Email</h4>
               <span>valerialarcon119@gmail.com</span>
             </div>
           </a>
-          <a href="tel:+573017219288" class="contact-card">
-            <div class="contact-icon">📱</div>
+          <a href="https://wa.me/573017219288" target="_blank" class="contact-card">
+            <div class="contact-icon" style="color: #25D366;">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
             <div>
-              <h4 data-en="Phone / WhatsApp" data-es="Teléfono / WhatsApp">Phone / WhatsApp</h4>
+              <h4 data-en="WhatsApp" data-es="WhatsApp">WhatsApp</h4>
               <span>+57 301 721 9288</span>
             </div>
           </a>
           <a href="https://www.linkedin.com/in/valeria-alejandra-alarcon-andrade-543722221/" target="_blank"
             class="contact-card">
-            <div class="contact-icon">💼</div>
+            <div class="contact-icon" style="color: #0077b5;">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5V13.2a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3V10.2H10.5v8.3h2.4v-4.4a1.64 1.64 0 0 1 1.64-1.64 1.64 1.64 0 0 1 1.64 1.64v4.4h2.4M6.25 10.2v8.3h2.4v-8.3h-2.4m1.2-3.3a1.5 1.5 0 1 1-1.5 1.5 1.5 1.5 0 0 1 1.5-1.5z"/></svg>
+            </div>
             <div>
               <h4>LinkedIn</h4>
               <span>Valeria Alarcón Andrade</span>
             </div>
           </a>
           <a href="https://github.com/ValeriaAlarcon119" target="_blank" class="contact-card">
-            <div class="contact-icon">🐙</div>
+            <div class="contact-icon" style="color: #333;">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 .3a12.1 12.1 0 00-3.8 23.6c.6.1.8-.2.8-.5v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .5 1.9.4 2.3.3.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.4-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-1 3.2 1.2a11.1 11.1 0 016.3 0c2.1-1.9 3.2-1.2 3.2-1.2.6 1.7.2 3 .1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.4-5.5 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A12.1 12.1 0 0012 .3z"/></svg>
+            </div>
             <div>
               <h4>GitHub</h4>
               <span>ValeriaAlarcon119</span>
@@ -695,17 +820,17 @@
           <p data-en="I'll get back to you as soon as possible." data-es="Te responderé lo antes posible.">I'll get back
             to you as soon as possible.</p>
 
-          <form class="contact-form" id="contactForm">
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/valerialarcon119@gmail.com" method="POST">
             <div class="form-group">
-              <input type="text" id="form-name" placeholder="Name" required data-en-placeholder="Name"
+              <input type="text" id="form-name" name="name" placeholder="Name" required data-en-placeholder="Name"
                 data-es-placeholder="Nombre">
             </div>
             <div class="form-group">
-              <input type="email" id="form-email" placeholder="Email" required data-en-placeholder="Email"
+              <input type="email" id="form-email" name="email" placeholder="Email" required data-en-placeholder="Email"
                 data-es-placeholder="Email">
             </div>
             <div class="form-group">
-              <textarea id="form-message" placeholder="Your Message" required data-en-placeholder="Your Message"
+              <textarea id="form-message" name="message" placeholder="Your Message" required data-en-placeholder="Your Message"
                 data-es-placeholder="Tu Mensaje"></textarea>
             </div>
             <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;" id="formSubmit">
@@ -713,10 +838,6 @@
             </button>
           </form>
 
-          <div class="form-divider" data-en="OR" data-es="O">OR</div>
-
-          <a href="https://wa.me/573017219288" target="_blank" class="btn btn-ghost btn-lg" style="width: 100%;"
-            data-en="💬 WhatsApp me" data-es="💬 WhatsApp">💬 WhatsApp me</a>
         </div>
       </div>
     </div>
@@ -732,11 +853,7 @@
         data-es="Diseñado y desarrollado con ❤️ por Valeria Alarcón Andrade · Pasto, Colombia · 2026">
         Designed & developed with ❤️ by Valeria Alarcón Andrade · Pasto, Colombia · 2026
       </p>
-      <div class="footer-links">
-        <a href="https://github.com/ValeriaAlarcon119" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/valeria-alejandra-alarcon-andrade-543722221/" target="_blank">LinkedIn</a>
-        <a href="mailto:valerialarcon119@gmail.com">Email</a>
-      </div>
+
     </div>
   </footer>
 
