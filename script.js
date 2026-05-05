@@ -2,29 +2,30 @@
 
 // ─── TYPED TEXT ───────────────────────────────────────────────────────────────
 const en_phrases = [
-  "Full-Stack Developer",
-  "Angular & Laravel Specialist",
-  "React & Node.js Engineer",
-  "UI/UX Enthusiast",
-  "NestJS & TypeScript Dev",
-  "Systems Engineer"
+  "Systems Engineer",
+  "Mobile & Web Architecture",
+  "Full Stack Solutions Expert",
+  "Hardware & Software Integration",
+  "AI & UX Specialist"
 ];
 const es_phrases = [
-  "Desarrolladora Full-Stack",
-  "Especialista en Angular & Laravel",
-  "Ingeniería de Sistemas",
-  "Apasionada por el UI/UX",
-  "NestJS & TypeScript Dev",
-  "React & Node.js Engineer"
+  "Ingeniera de Sistemas",
+  "Arquitecturas Móviles & Web",
+  "Experta en Soluciones Full Stack",
+  "Integración Hardware & Software",
+  "Especialista en IA & UX"
 ];
 
 let phraseIndex = 0, charIndex = 0, isDeleting = false;
 let currentPhrases = en_phrases;
+let typeTimeout = null;
 
 function typeEffect() {
   const el = document.getElementById('typedText');
   if (!el) return;
-  const phrase = currentPhrases[phraseIndex];
+
+  const phrase = currentPhrases[phraseIndex] || "";
+  
   if (isDeleting) {
     el.textContent = phrase.substring(0, charIndex - 1);
     charIndex--;
@@ -32,16 +33,20 @@ function typeEffect() {
     el.textContent = phrase.substring(0, charIndex + 1);
     charIndex++;
   }
-  let delay = isDeleting ? 40 : 90;
+
+  let delay = isDeleting ? 30 : 70;
+
   if (!isDeleting && charIndex === phrase.length) {
-    delay = 2000;
+    delay = 2500;
     isDeleting = true;
   } else if (isDeleting && charIndex === 0) {
     isDeleting = false;
     phraseIndex = (phraseIndex + 1) % currentPhrases.length;
-    delay = 400;
+    delay = 500;
   }
-  setTimeout(typeEffect, delay);
+
+  if (typeTimeout) clearTimeout(typeTimeout);
+  typeTimeout = setTimeout(typeEffect, delay);
 }
 
 // ─── THEME TOGGLE ─────────────────────────────────────────────────────────────
@@ -67,6 +72,14 @@ function applyLanguage() {
   const isEs = lang === 'es';
   langLabel.textContent = isEs ? 'EN' : 'ES';
   currentPhrases = isEs ? es_phrases : en_phrases;
+  
+  // Reset typing effect to start from first phrase of new language
+  phraseIndex = 0;
+  charIndex = 0;
+  isDeleting = false;
+  if (typeTimeout) clearTimeout(typeTimeout);
+  typeEffect();
+
   document.querySelectorAll('[data-en]').forEach(el => {
     const attr = isEs ? 'data-es' : 'data-en';
     if (el.getAttribute(attr)) el.textContent = el.getAttribute(attr);
@@ -298,7 +311,7 @@ if (contactForm) {
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('formSubmit');
-    const originalText = btn.innerHTML;
+    const originalContent = btn.innerHTML;
     
     // Get Form Data
     const name = document.getElementById('form-name').value;
@@ -306,7 +319,7 @@ if (contactForm) {
     const message = document.getElementById('form-message').value;
 
     // 1. Construct WhatsApp Message and Open
-    const waPhone = "+573017219288";
+    const waPhone = "573017219288";
     const waText = encodeURIComponent(`Hola Valeria! Mi nombre es ${name} (${email}).\n\nTe escribo por: ${message}`);
     const waUrl = `https://wa.me/${waPhone}?text=${waText}`;
     
@@ -315,11 +328,12 @@ if (contactForm) {
 
     // 2. Submit to Formspree (Email) in background
     btn.disabled = true;
-    btn.innerHTML = lang === 'es' ? 'Enviando...' : 'Sending...';
+    btn.innerHTML = lang === 'es' ? '<span>Enviando...</span>' : '<span>Sending...</span>';
 
     const formData = new FormData(contactForm);
     
     try {
+      // We use the action from the form (Formspree URL)
       const response = await fetch(contactForm.action, {
         method: 'POST',
         body: formData,
@@ -327,22 +341,25 @@ if (contactForm) {
       });
 
       if (response.ok) {
-        btn.innerHTML = lang === 'es' ? '¡Mensaje Enviado!' : 'Message Sent!';
+        btn.innerHTML = lang === 'es' ? '<span>¡Mensaje Enviado!</span>' : '<span>Message Sent!</span>';
         btn.style.background = 'var(--success)';
         contactForm.reset();
       } else {
-        throw new Error('Formspree error');
+        // If it's not OK, it might be unverified or rate limited
+        // But since WhatsApp opened, we can treat it as a partial success
+        btn.innerHTML = lang === 'es' ? '<span>¡Abriendo WhatsApp!</span>' : '<span>Opening WhatsApp!</span>';
+        btn.style.background = 'var(--primary)';
       }
     } catch (error) {
       // Fallback if fetch fails (e.g. adblocker)
-      btn.innerHTML = lang === 'es' ? 'Error al enviar' : 'Error sending';
-      btn.style.background = 'var(--accent2)';
+      btn.innerHTML = lang === 'es' ? '<span>¡Abriendo WhatsApp!</span>' : '<span>Opening WhatsApp!</span>';
+      btn.style.background = 'var(--primary)';
     } finally {
       setTimeout(() => {
         btn.disabled = false;
-        btn.innerHTML = originalText;
+        btn.innerHTML = originalContent;
         btn.style.background = '';
-      }, 4000);
+      }, 5000);
     }
   });
 }
