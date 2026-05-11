@@ -21,8 +21,8 @@
   --accent2: #be185d;
   --success: #064e3b;
   --gradient: linear-gradient(135deg, #6b21a8, #0f766e);
-  --gradient-text: linear-gradient(90deg, #9333ea, #0f766e, #ec4899, #d946ef);
-  --title-glow: drop-shadow(0 0 15px rgba(217, 70, 239, 0.4));
+  --gradient-text: linear-gradient(90deg, #9333ea, #0ea5e9, #14b8a6);
+  --title-glow: drop-shadow(0 4px 15px rgba(14, 165, 233, 0.35));
   --neon-border: 0 0 8px rgba(217, 70, 239, 0.5), inset 0 0 4px rgba(217, 70, 239, 0.2);
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.6);
   --shadow: 0 4px 24px rgba(0,0,0,0.7);
@@ -54,8 +54,8 @@
   --accent2: #f472b6;
   --success: #6ee7b7;
   --gradient: linear-gradient(135deg, #c084fc, #67e8f9);
-  --gradient-text: linear-gradient(90deg, #c084fc, #67e8f9, #f9a8d4, #f472b6);
-  --title-glow: drop-shadow(0 0 12px rgba(244, 114, 182, 0.35));
+  --gradient-text: linear-gradient(90deg, #c084fc, #38bdf8, #2dd4bf);
+  --title-glow: drop-shadow(0 4px 12px rgba(56, 189, 248, 0.25));
   --neon-border: 0 0 6px rgba(244, 114, 182, 0.5), inset 0 0 4px rgba(244, 114, 182, 0.2);
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
   --shadow: 0 4px 24px rgba(0,0,0,0.06);
