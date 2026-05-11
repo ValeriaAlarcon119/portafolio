@@ -63,6 +63,12 @@ themeToggle.addEventListener('click', () => {
   localStorage.setItem('va-theme', next);
 });
 
+// Attention pulse for 5 seconds
+themeToggle.classList.add('pulse-attention');
+setTimeout(() => {
+  themeToggle.classList.remove('pulse-attention');
+}, 5000);
+
 // ─── LANGUAGE TOGGLE ──────────────────────────────────────────────────────────
 const langToggle = document.getElementById('langToggle');
 const langLabel = document.getElementById('langLabel');
@@ -170,14 +176,30 @@ document.querySelectorAll('.project-card, .info-card, .skill-category, .timeline
   revealObserver.observe(el);
 });
 
-// ─── CARD SPOTLIGHT EFFECT ──────────────────────────────────────────────────
-document.querySelectorAll('.project-card').forEach(card => {
+// ─── CARD SPOTLIGHT & 3D TILT EFFECT ─────────────────────────────────────────
+document.querySelectorAll('.project-card, .info-card, .skill-category').forEach(card => {
   card.addEventListener('mousemove', e => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+    
+    // Spotlight variables
     card.style.setProperty('--mouse-x', `${x}px`);
     card.style.setProperty('--mouse-y', `${y}px`);
+    
+    // 3D Tilt calculation
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -6; // max tilt degrees
+    const rotateY = ((x - centerX) / centerX) * 6;
+    
+    // Combine existing hover scale with new 3D tilt
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+  });
+  
+  card.addEventListener('mouseleave', () => {
+    // Reset transform on mouse leave
+    card.style.transform = '';
   });
 });
 

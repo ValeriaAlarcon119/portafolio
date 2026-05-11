@@ -5,28 +5,30 @@
 
 /* --- TOKENS --- */
 :root {
-  --bg: #0a0a0f;
-  --bg-alt: #0f0f1a;
-  --bg-card: #13131f;
-  --bg-card-hover: #1a1a2e;
-  --border: rgba(139, 92, 246, 0.15);
-  --border-hover: rgba(139, 92, 246, 0.4);
-  --text: #e8e8f0;
-  --text-muted: #8888aa;
-  --text-dim: #555570;
-  --primary: #8b5cf6;
-  --primary-light: #a78bfa;
-  --primary-dark: #6d28d9;
-  --accent: #06b6d4;
-  --accent2: #f43f5e;
-  --success: #10b981;
-  --gradient: linear-gradient(135deg, #8b5cf6, #06b6d4);
-  --gradient-text: linear-gradient(90deg, #a78bfa, #06b6d4, #f43f5e);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
-  --shadow: 0 4px 24px rgba(0,0,0,0.5);
-  --shadow-lg: 0 16px 64px rgba(139,92,246,0.15);
-  --glow: 0 0 30px rgba(139,92,246,0.3);
-  --glow-primary: 0 0 40px rgba(139,92,246,0.25);
+  --bg: #030305;
+  --bg-alt: #08080a;
+  --bg-card: #0a0a0f;
+  --bg-card-hover: #12121c;
+  --border: rgba(107, 33, 168, 0.25);
+  --border-hover: rgba(107, 33, 168, 0.5);
+  --text: #e5e5e5;
+  --text-muted: #a3a3a3;
+  --text-dim: #737373;
+  --primary: #6b21a8;
+  --primary-light: #9333ea;
+  --primary-dark: #4c1d95;
+  --accent: #0f766e;
+  --accent2: #be185d;
+  --success: #064e3b;
+  --gradient: linear-gradient(135deg, #6b21a8, #0f766e);
+  --gradient-text: linear-gradient(90deg, #9333ea, #0f766e, #ec4899, #d946ef);
+  --title-glow: drop-shadow(0 0 15px rgba(217, 70, 239, 0.4));
+  --neon-border: 0 0 8px rgba(217, 70, 239, 0.5), inset 0 0 4px rgba(217, 70, 239, 0.2);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.6);
+  --shadow: 0 4px 24px rgba(0,0,0,0.7);
+  --shadow-lg: 0 16px 64px rgba(107, 33, 168, 0.2);
+  --glow: 0 0 30px rgba(107, 33, 168, 0.25);
+  --glow-primary: 0 0 40px rgba(107, 33, 168, 0.2);
   --radius: 20px;
   --radius-sm: 10px;
   --nav-h: 80px;
@@ -36,19 +38,29 @@
 }
 
 [data-theme="light"] {
-  --bg: #f2f2f7;
-  --bg-alt: #e5e5ea;
-  --bg-card: #fdfdfe;
-  --bg-card-hover: #f5f5fc;
-  --border: rgba(139,92,246,0.12);
-  --border-hover: rgba(139,92,246,0.35);
-  --text: #1a1a2e;
-  --text-muted: #333355;
-  --text-dim: #8888aa;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow: 0 4px 24px rgba(0,0,0,0.08);
-  --shadow-lg: 0 16px 64px rgba(139,92,246,0.1);
-  --glow: 0 0 30px rgba(139,92,246,0.15);
+  --bg: #fafafa;
+  --bg-alt: #f4f4f5;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fdfdfd;
+  --border: rgba(196, 181, 253, 0.4);
+  --border-hover: rgba(196, 181, 253, 0.7);
+  --text: #1f2937;
+  --text-muted: #6b7280;
+  --text-dim: #9ca3af;
+  --primary: #c084fc;
+  --primary-light: #d8b4fe;
+  --primary-dark: #a855f7;
+  --accent: #67e8f9;
+  --accent2: #f472b6;
+  --success: #6ee7b7;
+  --gradient: linear-gradient(135deg, #c084fc, #67e8f9);
+  --gradient-text: linear-gradient(90deg, #c084fc, #67e8f9, #f9a8d4, #f472b6);
+  --title-glow: drop-shadow(0 0 12px rgba(244, 114, 182, 0.35));
+  --neon-border: 0 0 6px rgba(244, 114, 182, 0.5), inset 0 0 4px rgba(244, 114, 182, 0.2);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow: 0 4px 24px rgba(0,0,0,0.06);
+  --shadow-lg: 0 16px 64px rgba(196, 181, 253, 0.15);
+  --glow: 0 0 30px rgba(196, 181, 253, 0.2);
 }
 
 /* --- RESET --- */
@@ -140,6 +152,18 @@ img { max-width: 100%; display: block; }
   border-color: var(--primary); color: var(--primary);
 }
 .theme-toggle svg { width: 16px; height: 16px; }
+
+/* --- ATTENTION PULSE --- */
+.pulse-attention {
+  animation: attention-pulse 1s infinite alternate;
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  box-shadow: 0 0 15px var(--primary);
+}
+@keyframes attention-pulse {
+  from { transform: scale(1); box-shadow: 0 0 5px var(--primary); }
+  to { transform: scale(1.15); box-shadow: 0 0 20px var(--primary); }
+}
 .icon-sun { display: block; }
 .icon-moon { display: none; }
 [data-theme="light"] .icon-sun { display: none; }
@@ -249,12 +273,13 @@ img { max-width: 100%; display: block; }
   color: var(--text-muted); margin-bottom: 8px; letter-spacing: 0;
 }
 .name-gradient {
-  display: block;
+  display: inline-block;
   background: var(--gradient-text); background-size: 200%;
   background-clip: text;
   -webkit-background-clip: text; 
   -webkit-text-fill-color: transparent;
   animation: shimmer 4s linear infinite;
+  filter: var(--title-glow);
 }
 @keyframes shimmer {
   0% { background-position: 0% center; }
@@ -428,6 +453,7 @@ img { max-width: 100%; display: block; }
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 16px;
+  filter: var(--title-glow);
 }
 .section-subtitle {
   font-size: 1.05rem; color: var(--text-muted);
@@ -486,10 +512,10 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 .info-card:hover { 
-  border-color: var(--primary); 
+  border-color: var(--primary-light); 
   background: rgba(139, 92, 246, 0.05);
   transform: translateY(-8px); 
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3); 
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3), var(--neon-border); 
 }
 .info-card-icon { 
   font-size: 1.8rem; 
@@ -527,9 +553,9 @@ img { max-width: 100%; display: block; }
   pointer-events: none;
 }
 .skill-category:hover { 
-  border-color: rgba(139, 92, 246, 0.3);
+  border-color: var(--primary-light);
   transform: translateY(-5px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.2); 
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2), var(--neon-border); 
 }
 .skill-cat-title {
   font-size: 1.1rem; font-weight: 800; margin-bottom: 24px;
@@ -631,9 +657,9 @@ img { max-width: 100%; display: block; }
 }
 
 .project-card:hover {
-  border-color: var(--primary);
+  border-color: var(--primary-light);
   transform: translateY(-10px) scale(1.01);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4), var(--glow-primary);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), var(--glow-primary), var(--neon-border);
 }
 
 
@@ -781,9 +807,9 @@ img { max-width: 100%; display: block; }
   cursor: pointer;
 }
 .contact-card:hover { 
-  border-color: var(--primary); 
+  border-color: var(--primary-light); 
   transform: translateY(-10px) scale(1.02); 
-  box-shadow: 0 30px 60px rgba(0,0,0,0.4); 
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4), var(--neon-border); 
   background: rgba(139, 92, 246, 0.05);
 }
 .contact-icon { 
