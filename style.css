@@ -919,6 +919,13 @@ img { max-width: 100%; display: block; }
   .section { padding: 64px 0; }
   .hero-cta { flex-direction: column; align-items: center; }
   .btn { width: 100%; justify-content: center; max-width: 280px; }
+  
+  /* Fix contact section overflow on small screens */
+  .contact-card { padding: 20px; gap: 16px; }
+  .contact-card > div:last-child { min-width: 0; flex: 1; }
+  .contact-card span { font-size: 0.95rem; word-break: break-word; display: block; }
+  .contact-icon { width: 50px; height: 50px; flex-shrink: 0; }
+  .contact-cta-box { padding: 24px 20px; }
 }
 
 /* ================================================================
