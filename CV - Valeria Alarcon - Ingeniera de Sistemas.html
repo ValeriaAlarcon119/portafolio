@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Valeria Alejandra Alarcón Andrade</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+        :root {
+            --bg-page: #f0f2f5;
+            --bg-cv: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #5a5a5a;
+            --accent: #111111;
+            --border-color: #eaeaea;
+            --primary: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            padding: 40px 20px;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .cv-container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background-color: var(--bg-cv);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER ELEGANCE */
+        .header {
+            background-color: #000000;
+            padding: 55px 60px 35px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 2px solid #333333;
+        }
+
+        .header-info h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .header-info h2 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #cccccc;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            font-size: 13px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-item span {
+            color: #ffffff;
+        }
+
+        .contact-item a {
+            color: #90e0ef;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .contact-item a:hover, .contact-item a:hover span {
+            color: #ffffff;
+        }
+
+        .contact-icon {
+            transition: fill 0.2s;
+        }
+
+        .contact-item a:hover svg {
+            fill: #ffffff !important;
+        }
+
+        /* BODY LAYOUT */
+        .cv-body {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .left-column {
+            width: 32%;
+            background-color: #fafafa;
+            padding: 45px 40px;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .right-column {
+            width: 68%;
+            padding: 45px 55px;
+            background-color: var(--bg-cv);
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            margin-bottom: 22px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* LEFT COLUMN */
+        .profile-text {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            text-align: left;
+            line-height: 1.7;
+        }
+
+        .education-item {
+            margin-bottom: 24px;
+        }
+
+        .edu-year {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 3px;
+            font-family: var(--font-mono, monospace);
+        }
+
+        .edu-school {
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 3px;
+        }
+
+        .edu-detail {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .skills-list li {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            position: relative;
+            padding-left: 14px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .skills-list li::before {
+            content: "";
+            width: 4px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 7px;
+        }
+
+        .cert-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--primary) !important;
+            color: #ffffff !important;
+            padding: 10px 20px !important;
+            border: 1px solid var(--primary) !important;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 11.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        .cert-link:hover {
+            background-color: #333333 !important;
+            border-color: #333333 !important;
+        }
+
+        /* RIGHT COLUMN */
+        .experience-item {
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .exp-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .arrow-icon {
+            display: none !important; /* Hide bulky generic icons */
+        }
+
+        .exp-date {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #90e0ef;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            background: #000000;
+            padding: 4px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .exp-company-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 14px;
+        }
+
+        .exp-role {
+            font-family: 'Playfair Display', serif;
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .exp-company {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .exp-content {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            line-height: 1.7;
+        }
+
+        .exp-tech {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        ul.exp-list {
+            margin-left: 18px;
+            margin-top: 12px;
+        }
+
+        ul.exp-list li {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            padding-left: 5px;
+            line-height: 1.6;
+        }
+        
+        ul.exp-list li::marker {
+            color: #d0d0d0;
+        }
+        
+        .github-footer {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        .github-footer a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 5px;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .github-footer a:hover {
+            border-color: var(--primary);
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            @page { margin: 0; size: A4; }
+            body { padding: 0; background: white; -webkit-print-color-adjust: exact; }
+            .cv-container { box-shadow: none; border-radius: 0; max-width: 100%; }
+            .header { padding: 35px 45px 25px 45px; }
+            .left-column { width: 32%; padding: 30px 25px; }
+            .right-column { width: 68%; padding: 30px 40px; }
+            .section { margin-bottom: 22px; }
+            .experience-item { margin-bottom: 20px; }
+            .profile-text, .exp-content, ul.exp-list li { font-size: 10.5px; line-height: 1.5; }
+            .exp-role { font-size: 15px; }
+            .exp-company, .edu-school { font-size: 12px; }
+            .exp-date, .edu-year { font-size: 9.5px; }
+            .exp-tech { font-size: 9px; }
+            .section-title { font-size: 11px; margin-bottom: 15px; }
+            .skills-list li { font-size: 10.5px; margin-bottom: 6px; }
+            .contact-item a { color: var(--text-muted) !important; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cv-container">
+        <!-- ENCABEZADO SUPERIOR AZUL -->
+        <div class="header">
+            <div class="header-info">
+                <h1>Valeria Alejandra Alarcón Andrade</h1>
+                <h2>Ingeniera de Sistemas</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item" style="margin-bottom: 2px;">
+                    <a href="mailto:valerialarcon119@gmail.com"
+                        style="color: white; text-decoration: none; display: flex; align-items: center; justify-content: flex-end; gap: 6px;">
+                        <span>valerialarcon119@gmail.com</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="contact-item"
+                    style="margin-bottom: 2px; display: flex; align-items: center; justify-content: flex-end; gap: 6px;">
+                    <span>(+57) 301 721 9288</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                        <path
+                            d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 1.25 0 2.45.2 3.57.57.35.13.46.52.24 1.02l-2.2 2.2z" />
+                    </svg>
+                </div>
+                <div class="contact-item"
+                    style="margin-bottom: 2px; display: flex; align-items: center; justify-content: flex-end; gap: 6px;">
+                    <span>Pasto - Nariño, Colombia</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                        <path
+                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    </svg>
+                </div>
+                <div class="contact-item"
+                    style="display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 5px;">
+                    <a href="https://portafolioval.netlify.app/" target="_blank"
+                        style="color: #90e0ef; text-decoration: none; font-size: 10.5px; display: flex; align-items: center; gap: 4px; font-weight: 600;">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="#90e0ef">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-1.07 3.97-2.1 5.39z" />
+                        </svg>
+                        Portfolio
+                    </a>
+                    <a href="https://www.linkedin.com/in/valeria-alejandra-alarcon-andrade-543722221/" target="_blank"
+                        style="color: #90e0ef; text-decoration: none; font-size: 10.5px; display: flex; align-items: center; gap: 4px; font-weight: 600;">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="#90e0ef">
+                            <path
+                                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5V13.2a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3V10.2H10.5v8.3h2.4v-4.4a1.64 1.64 0 0 1 1.64-1.64 1.64 1.64 0 0 1 1.64 1.64v4.4h2.4M6.25 10.2v8.3h2.4v-8.3h-2.4m1.2-3.3a1.5 1.5 0 1 1-1.5 1.5 1.5 1.5 0 0 1 1.5-1.5z" />
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/ValeriaAlarcon119" target="_blank"
+                        style="color: #90e0ef; text-decoration: none; font-size: 10.5px; display: flex; align-items: center; gap: 4px; font-weight: 600;">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="#90e0ef">
+                            <path
+                                d="M12 .3a12.1 12.1 0 00-3.8 23.6c.6.1.8-.2.8-.5v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .5 1.9.4 2.3.3.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.4-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-1 3.2 1.2a11.1 11.1 0 016.3 0c2.1-1.9 3.2-1.2 3.2-1.2.6 1.7.2 3 .1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.4-5.5 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A12.1 12.1 0 0012 .3z" />
+                        </svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cv-body">
+            <!-- COLUMNA IZQUIERDA -->
+            <div class="left-column">
+                <div class="section">
+                    <h3 class="section-title">Perfil</h3>
+                    <p class="profile-text">
+                        Ingeniera de Sistemas con experiencia en desarrollo de productos digitales escalables, arquitecturas móviles y soluciones Full Stack. Orientada a la seguridad, la trazabilidad y una experiencia de usuario de calidad.
+                    </p>
+
+                    <p class="profile-text">
+                        He trabajado en equipos ágiles internacionales, con comunicación directa con clientes y un enfoque constante en el impacto real del producto.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Educación</h3>
+
+                    <div class="education-item">
+                        <div class="edu-year">■ 2024 - Universidad de Nariño</div>
+                        <div class="edu-school">Ingeniera de Sistemas</div>
+                        <div class="edu-detail">03/2019 – 04/2024</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="edu-year">■ 2025 - Universidad de Nariño</div>
+                        <div class="edu-school">Diplomado Desarrollo Software</div>
+                        <div class="edu-detail">08/2024 – 01/2025</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="edu-year">■ 2025 - Evolve Your English</div>
+                        <div class="edu-school">Inglés Intermedio</div>
+                    </div>
+                </div>
+
+
+
+                <div class="section">
+                    <h3 class="section-title">Habilidades Técnicas</h3>
+                    <ul class="skills-list">
+                        <li><strong>Frontend:</strong> React 19, React Native (Expo), Angular 17+, Next.js, TypeScript, Tailwind CSS, shadcn/ui, Framer Motion.</li>
+                        <li><strong>Backend:</strong> NestJS, Node.js (Express), Prisma ORM, Laravel 11, ASP.NET Core, REST APIs, JWT, RBAC.</li>
+                        <li><strong>Cloud & Infra:</strong> PostgreSQL (Supabase), Docker, AWS, Azure DevOps, Vercel, Render, Git/GitHub.</li>
+                        <li><strong>Arquitectura & IA:</strong> Arquitectura Hexagonal, Clean Architecture, OpenAI API, Máquina de Estados.</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Habilidades Blandas</h3>
+                    <ul class="skills-list">
+                        <li>Análisis y gestión de requerimientos</li>
+                        <li>Comunicación clara con clientes y stakeholders</li>
+                        <li>Atención al detalle y calidad en la entrega</li>
+                        <li>Trabajo colaborativo orientado a resultados</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Idiomas</h3>
+                    <ul class="skills-list">
+                        <li>Español (Nativo)</li>
+                        <li>Inglés (Intermedio B1)</li>
+                    </ul>
+                </div>
+
+                <div class="section" style="margin-top: 10px;">
+                    <a href="https://drive.google.com/file/d/1SpqRXr2haz2Wb54-74oqHtaWYYrJeIg5/view" target="_blank"
+                        class="cert-link">
+                        <svg style="width: 14px; height: 14px; fill: white;" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-1.07 3.97-2.1 5.39z" />
+                        </svg>
+                        VER CERTIFICADOS
+                    </a>
+                </div>
+            </div>
+
+            <!-- COLUMNA DERECHA -->
+            <div class="right-column">
+                <div class="section">
+                    <h3 class="section-title">Experiencia</h3>
+
+                    <!-- KeyGo -->
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <span class="arrow-icon">➔</span>
+                            <span class="exp-date">Febrero 2026 – Actualidad (Freelance / Manejo de Tiempos)</span>
+                        </div>
+                        <div class="exp-company-row">
+                            <span class="exp-role">Desarrolladora Full Stack</span>
+                            <span class="exp-company">KeyGo, Pasto, Colombia</span>
+                        </div>
+                        <div class="exp-content">
+                            <ul class="exp-list">
+                                <li>Desarrollé una plataforma para la custodia de activos físicos, integrando hardware con arquitectura cloud de alta disponibilidad.</li>
+                                <li>Implementé una arquitectura robusta (NestJS + React Native) con trazabilidad del ciclo de vida de los activos en tiempo real.</li>
+                                <li>Diseñé el modelo de datos relacional (Supabase/PostgreSQL) para soportar auditorías, históricos y pagos.</li>
+                                <li>Implementé un ecosistema de seguridad con autenticación multi-rol y cifrado avanzado.</li>
+                            </ul>
+                            <div class="exp-tech">Tecnologías: NestJS, React Native, Expo, Prisma ORM, PostgreSQL, JWT.</div>
+                        </div>
+                    </div>
+
+                    <!-- Soleia -->
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <span class="arrow-icon">➔</span>
+                            <span class="exp-date">Mayo 2025 – 25 de febrero de 2026 (Freelance)</span>
+                        </div>
+                        <div class="exp-company-row">
+                            <span class="exp-role">Desarrolladora Frontend</span>
+                            <span class="exp-company">Soleia, México</span>
+                        </div>
+                        <div class="exp-content">
+                            <ul class="exp-list">
+                                <li>Desarrollé una Landing Page y un Cotizador Interactivo de Lotes mediante manipulación de DOM con Vanilla JavaScript.</li>
+                                <li>Implementé un sistema de gestión de estados en tiempo real y optimicé el rendimiento web para lograr altos puntajes en métricas.</li>
+                                <li>Diseñé la arquitectura CSS responsiva, integrando captura y gestión de leads.</li>
+                            </ul>
+                            <div class="exp-tech">Tecnologías: Vanilla JS, SVG DOM, CSS3 (Mobile-First), WebP, Netlify, Performance Optimization.</div>
+                        </div>
+                    </div>
+
+                    <!-- Grayola -->
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <span class="arrow-icon">➔</span>
+                            <span class="exp-date">Noviembre 2025 - Diciembre 2025</span>
+                        </div>
+                        <div class="exp-company-row">
+                            <span class="exp-role">Desarrolladora Full Stack</span>
+                            <span class="exp-company">Grayola, Estados Unidos</span>
+                        </div>
+                        <div class="exp-content">
+                            <ul class="exp-list">
+                                <li>Desarrollé una plataforma de diseño como servicio (DaaS) con Next.js y TypeScript, integrando autenticación segura.</li>
+                                <li>Diseñé un flujo de Onboarding fluido e intuitivo para asegurar una gran experiencia a los usuarios.</li>
+                                <li>Implementé Dashboards con privacidad de datos mediante Supabase RLS y gestión documental de proyectos.</li>
+                            </ul>
+                            <div class="exp-tech">Tecnologías: Next.js, TypeScript, Supabase RLS, Tailwind CSS, Shadcn/UI, PostgreSQL.</div>
+                        </div>
+                    </div>
+
+                    <!-- Black & Orange -->
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <span class="arrow-icon">➔</span>
+                            <span class="exp-date">Septiembre 2024 - Junio 2025</span>
+                        </div>
+                        <div class="exp-company-row">
+                            <span class="exp-role">Desarrolladora Backend</span>
+                            <span class="exp-company">Black & Orange, México</span>
+                        </div>
+                        <div class="exp-content">
+                            <ul class="exp-list">
+                                <li>Integré ecosistemas CRM con infraestructuras cloud mediante el desarrollo de microservicios en Node.js y AWS.</li>
+                                <li>Sincronicé flujos de datos para clientes corporativos, automatizando procesos con Webhooks y APIs RESTful.</li>
+                                <li>Optimicé la arquitectura para soportar alta demanda de peticiones garantizando seguridad mediante OAuth2.</li>
+                            </ul>
+                            <div class="exp-tech">Tecnologías: Node.js, Express, HubSpot API, Oracle Cloud, AWS, Webhooks, RESTful APIs.</div>
+                        </div>
+                    </div>
+
+                    <!-- SIIAN ERP -->
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <span class="arrow-icon">➔</span>
+                            <span class="exp-date">Marzo 2024 - Diciembre 2024</span>
+                        </div>
+                        <div class="exp-company-row">
+                            <span class="exp-role">Desarrolladora Full Stack</span>
+                            <span class="exp-company">SIIAN ERP, Pasto, Colombia</span>
+                        </div>
+                        <div class="exp-content">
+                            <ul class="exp-list">
+                                <li>Desarrollé y optimicé módulos de Finanzas y Logística con .NET Core y PostgreSQL.</li>
+                                <li>Automaticé los flujos de CI/CD mediante Azure DevOps, acelerando las entregas del equipo.</li>
+                                <li>Modernicé la lógica empresarial del ERP para soportar mayores volúmenes de transacciones.</li>
+                            </ul>
+                            <div class="exp-tech">Tecnologías: ASP.NET Core, C#, Entity Framework, Dapper, PostgreSQL, Azure.</div>
+                        </div>
+                    </div>
+
+                    <!-- TecnoPlanet -->
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <span class="arrow-icon">➔</span>
+                            <span class="exp-date">Julio 2023 - Enero 2024</span>
+                        </div>
+                        <div class="exp-company-row">
+                            <span class="exp-role">Desarrolladora Full Stack</span>
+                            <span class="exp-company">TecnoPlanet, Pasto, Colombia</span>
+                        </div>
+                        <div class="exp-content">
+                            <ul class="exp-list">
+                                <li>Desarrollé herramientas web para la optimización de procesos administrativos internos y gestión de inventarios.</li>
+                                <li>Construí y expandí APIs RESTful en diversos entornos (Django, Laravel, NestJS), garantizando la interoperabilidad.</li>
+                            </ul>
+                            <div class="exp-tech">Tecnologías: Django, Laravel, NestJS, Angular, MySQL.</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Proyectos Destacados</h3>
+                    <div class="exp-content">
+                        <ul class="exp-list">
+                            <li><strong>EliteStream Pro v2.0:</strong> Plataforma de streaming con UI interactiva 3D, integración de datos dinámicos y autenticación segura — React 18, Framer Motion.</li>
+                            <li><strong>Mallku:</strong> E-commerce con dashboard analítico, automatización de catálogos y procesamiento de imágenes — React 19, Node.js.</li>
+                            <li><strong>LEMARJ:</strong> Aplicación de gestión de proyectos con IA conversacional, tableros Kanban, RBAC y sincronización en tiempo real — React 19, TypeScript, Supabase.</li>
+                            <li><strong>Gestión de Solicitudes:</strong> Plataforma empresarial con dashboard de analíticas y gestión de candidatos — Angular 17+, Laravel 11.</li>
+                            <li><strong>Recuerdos Levj:</strong> E-commerce artesanal con personalización de productos y flujo de pago por WhatsApp — React 18, Zustand.</li>
+                        </ul>
+                        <p class="github-footer"
+                            style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 8px; font-style: italic; color: #555;">
+                            📂 Todos los proyectos se encuentran desplegados y disponibles en GitHub con documentación
+                            completa (README).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

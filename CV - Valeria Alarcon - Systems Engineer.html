@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Valeria Alejandra Alarcón Andrade</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+        :root {
+            --header-bg: #003366;
+            /* Dark blue from generic format */
+            --text-dark: #333333;
+            --text-gray: #555555;
+            --accent-blue: #0056b3;
+            --section-title: #003366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', 'Segoe UI', sans-serif;
+            background-color: #e0e0e0;
+            padding: 20px;
+            color: var(--text-dark);
+        }
+
+        .cv-container {
+            max-width: 1200px;
+            /* Wider as requested */
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* TOP HEADER (Like generic format) */
+        .header {
+            background-color: var(--header-bg);
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-info h1 {
+            font-size: 32px;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .header-info h2 {
+            font-size: 18px;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 5px;
+            font-size: 13px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-icon {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        /* 2-COLUMN BODY */
+        .cv-body {
+            display: flex;
+            flex-direction: row;
+        }
+
+        /* LEFT COLUMN (Profile, Education, Skills) */
+        .left-column {
+            width: 25%;
+            background-color: #f4f4f4;
+            padding: 20px 15px;
+            border-right: 1px solid #ddd;
+        }
+
+        /* RIGHT COLUMN (Experience) */
+        .right-column {
+            width: 75%;
+            padding: 20px 30px;
+            background-color: white;
+        }
+
+        /* COMMON STYLES */
+        .section {
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            color: var(--section-title);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            /* border-bottom: 2px solid #ccc;  Optional, example has no marked line */
+        }
+
+        /* Left Column Styles */
+        .profile-text {
+            font-size: 13.5px;
+            line-height: 1.4;
+            text-align: justify;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        .education-item {
+            margin-bottom: 15px;
+        }
+
+        .edu-year {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 15px;
+        }
+
+        .edu-school {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .edu-detail {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .skills-list li::before {
+            content: "•";
+            color: var(--accent-blue);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .cert-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--header-bg);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Right Column Styles (Experience) */
+        .experience-item {
+            margin-bottom: 15px;
+        }
+
+        .exp-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            gap: 10px;
+        }
+
+        .arrow-icon {
+            color: var(--text-dark);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .exp-date {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--section-title);
+        }
+
+        .exp-company-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .exp-company {
+            font-size: 16px;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .exp-role {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 15px;
+        }
+
+        .exp-content {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .exp-tech {
+            margin-top: 8px;
+            font-size: 13px;
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        ul.exp-list {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        ul.exp-list li {
+            margin-bottom: 2px;
+            font-size: 12.5px;
+        }
+
+        @media print {
+            @page {
+                margin: 0.5cm;
+                size: letter;
+            }
+
+            body {
+                padding: 0;
+                margin: 0;
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .cv-container {
+                box-shadow: none;
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .header {
+                padding: 10px 20px;
+            }
+
+            .header-info h1 {
+                font-size: 20px;
+                margin-bottom: 2px;
+            }
+
+            .header-info h2 {
+                font-size: 13px;
+                margin-bottom: 5px;
+            }
+
+            .cv-body {
+                padding: 0;
+            }
+
+            .left-column {
+                width: 25%;
+                padding: 15px 15px;
+            }
+
+            .right-column {
+                width: 75%;
+                padding: 15px 20px;
+            }
+
+            .section {
+                margin-bottom: 15px;
+            }
+
+            .section-title {
+                font-size: 13px;
+                margin-bottom: 4px;
+            }
+
+            .experience-item {
+                margin-bottom: 8px;
+            }
+
+            .profile-text,
+            .exp-content,
+            .skills-list li,
+            .edu-detail,
+            .edu-year {
+                font-size: 9px;
+                line-height: 1.2;
+            }
+
+            .exp-company,
+            .exp-role,
+            .exp-date {
+                font-size: 10px;
+            }
+
+            .exp-header {
+                margin-bottom: 2px;
+            }
+
+            .exp-company-row {
+                margin-bottom: 4px;
+                padding-bottom: 2px;
+            }
+
+            .exp-tech {
+                font-size: 8.5px;
+                margin-top: 2px;
+            }
+
+            /* Ensure links are clickable in PDF */
+            a {
+                text-decoration: none !important;
+                pointer-events: auto !important;
+            }
+
+            /* Fix for the certificate button */
+            .cert-link {
+                background-color: var(--header-bg) !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                border: 1px solid var(--header-bg);
+                /* Add border to ensure shape visibility */
+                padding: 5px 8px;
+                font-size: 9px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cv-container">
+        <!-- BLUE TOP HEADER -->
+        <div class="header">
+            <div class="header-info">
+                <h1>Valeria Alejandra Alarcón Andrade</h1>
+                <h2>Systems Engineer</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <a href="mailto:valerialarcon119@gmail.com">valerialarcon119@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 1.25 0 2.45.2 3.57.57.35.13.46.52.24 1.02l-2.2 2.2z" />
+                    </svg>
+                    <span>(+57) 3017219288</span>
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    </svg>
+                    <span>Pasto - Nariño, Colombia</span>
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                    </svg>
+                    <a href="https://portafolioval.netlify.app/" target="_blank">Portfolio</a> |
+                    <a href="https://www.linkedin.com/in/valeria-alejandra-alarcon-andrade-543722221"
+                        target="_blank">LinkedIn</a> |
+                    <a href="https://github.com/ValeriaAlarcon119" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cv-body">
+            <!-- LEFT COLUMN -->
+            <div class="left-column">
+                <div class="section">
+                    <h3 class="section-title">Profile</h3>
+                    <p class="profile-text">
+                        Systems Engineer with experience in building scalable digital products using <strong>React.js</strong> and AI integration. Focused on UX, architecture design, and production deployment.
+                    </p>
+
+                    <p class="profile-text">
+                        I thrive in agile teams, bringing technical autonomy, clear communication with stakeholders, and a genuine focus on product impact.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Education</h3>
+
+                    <div class="education-item">
+                        <div class="edu-year">■ 2024 - Universidad de Nariño</div>
+                        <div class="edu-school">Systems Engineer</div>
+                        <div class="edu-detail">03/2019 – 04/2024</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="edu-year">■ 2025 - Universidad de Nariño</div>
+                        <div class="edu-school">Software Development Diploma</div>
+                        <div class="edu-detail">08/2024 – 01/2025</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="edu-year">■ 2025 - Evolve Your English</div>
+                        <div class="edu-school">Intermediate English</div>
+                    </div>
+                </div>
+
+
+
+                <div class="section">
+                    <h3 class="section-title">Technical Skills</h3>
+                    <ul class="skills-list">
+                        <li><strong>Frontend:</strong> React 19, Angular 17+, Next.js, TypeScript, Tailwind CSS, shadcn/ui, Framer Motion, Chart.js.</li>
+                        <li><strong>Backend:</strong> Node.js (Express), NestJS, Laravel 11 (PHP 8.2+), REST APIs, JWT, OpenAI API.</li>
+                        <li><strong>Cloud & DevOps:</strong> Supabase, Docker, PostgreSQL, Netlify, Vercel, Render, Azure DevOps.</li>
+                        <li><strong>Architecture:</strong> Clean Architecture, Hexagonal Architecture, RBAC, Agile (Scrum).</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Soft Skills</h3>
+                    <ul class="skills-list">
+                        <li>Requirements analysis and management</li>
+                        <li>Clear communication with clients and stakeholders</li>
+                        <li>Attention to detail and delivery quality</li>
+                        <li>Result-oriented collaborative work</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Languages</h3>
+                    <ul class="skills-list">
+                        <li>Spanish (Native)</li>
+                        <li>English (Intermediate B1)</li>
+                    </ul>
+                </div>
+
+                <div class="section" style="margin-top: 10px;">
+                    <a href="https://drive.google.com/file/d/1SpqRXr2haz2Wb54-74oqHtaWYYrJeIg5/view" target="_blank"
+                        class="cert-link">
+                        <svg style="width: 14px; height: 14px; fill: white;" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-1.07 3.97-2.1 5.39z" />
+                        </svg>
+                        VIEW CERTIFICATES
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="right-column">
+                <div class="section">
+                    <h3 class="section-title">Experience</h3>
+
+                    <!-- Soleia -->
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <span class="arrow-icon">➔</span>
+                            <span class="exp-date">May 2025 – February 25, 2026 (Freelance - Parallel)</span>
+                        </div>
+                        <div class="exp-company-row">
+                            <span class="exp-role">Frontend Developer (Freelance)</span>
+                            <span class="exp-company">Soleia</span>
+                        </div>
+                        <div class="exp-content">
+                            <ul class="exp-list">
+                                <li>Development of a premium landing page for real estate, including an interactive price calculator and amenities management.</li>
+                                <li>Implementation of contact flows and brochure download systems.</li>
+                                <li>Performance optimization (WebP, SEO) and high-fidelity responsive design.</li>
+                            </ul>
+                            <div class="exp-tech">Technologies: React, Next.js, Supabase, Tailwind CSS, Netlify, Git.</div>
+                        </div>
+                    </div>
+
+                    <!-- Grayola -->
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <span class="arrow-icon">➔</span>
+                            <span class="exp-date">November 2025 - December 2025</span>
+                        </div>
+                        <div class="exp-company-row">
+                            <span class="exp-role">Full Stack Developer</span>
+                            <span class="exp-company">Grayola (AI Startup)</span>
+                        </div>
+                        <div class="exp-content">
+                            <ul class="exp-list">
+                                <li>Development of a design management ecosystem connecting clients and designers.</li>
+                                <li>Implementation of hexagonal/clean architecture for scalability and maintenance.</li>
+                                <li>Management of workspaces, request flows, and on-demand marketplace features.</li>
+                            </ul>
+                            <div class="exp-tech">Technologies: Next.js, NestJS, TypeScript, PostgreSQL, Docker, Supabase, Stripe, Vercel.</div>
+                        </div>
+                    </div>
+
+                    <!-- Black & Orange -->
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <span class="arrow-icon">➔</span>
+                            <span class="exp-date">September 2024 - June 2025</span>
+                        </div>
+                        <div class="exp-company-row">
+                            <span class="exp-role">Backend Developer</span>
+                            <span class="exp-company">Black & Orange</span>
+                        </div>
+                        <div class="exp-content">
+                            <ul class="exp-list">
+                                <li>Backend development and server performance optimization. Design and integration of
+                                    scalable APIs.</li>
+                                <li>Integration with external services and technical requirement management with
+                                    clients.
+                                </li>
+                            </ul>
+                            <div class="exp-tech">Technologies: Node.js, React Native, AWS, Oracle Cloud, Postman,
+                                HubSpot APIs.</div>
+                        </div>
+                    </div>
+
+                    <!-- SIIAN ERP -->
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <span class="arrow-icon">➔</span>
+                            <span class="exp-date">March 2024 - December 2024</span>
+                        </div>
+                        <div class="exp-company-row">
+                            <span class="exp-role">Full Stack Developer</span>
+                            <span class="exp-company">SIIAN ERP</span>
+                        </div>
+                        <div class="exp-content">
+                            <ul class="exp-list">
+                                <li>Development and maintenance of enterprise ERP. Creation of custom modules and
+                                    RESTful
+                                    APIs (Finance, Logistics).</li>
+                                <li>CI/CD automation using Azure DevOps.</li>
+                            </ul>
+                            <div class="exp-tech">Technologies: ASP.NET Core, C#, Entity Framework, Dapper, PostgreSQL.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TecnoPlanet -->
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <span class="arrow-icon">➔</span>
+                            <span class="exp-date">July 2023 - January 2024</span>
+                        </div>
+                        <div class="exp-company-row">
+                            <span class="exp-role">Full Stack Developer</span>
+                            <span class="exp-company">TecnoPlanet</span>
+                        </div>
+                        <div class="exp-content">
+                            <ul class="exp-list">
+                                <li>Web application and backend service development for process optimization.</li>
+                                <li>Construction and maintenance of APIs using Django REST, NestJS, and Laravel.</li>
+                            </ul>
+                            <div class="exp-tech">Technologies: Django/Python, Laravel/PHP, NestJS, Angular.</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Featured Projects</h3>
+                    <div class="exp-content">
+                        <ul class="exp-list">
+                            <li><strong>EliteStream Pro v2.0:</strong> Streaming platform with 3D interactive UI, dynamic data integration, and secure authentication — React 18, Framer Motion.</li>
+                            <li><strong>Mallku:</strong> E-commerce platform with analytics dashboard, catalog automation, and image processing — React 19, Node.js.</li>
+                            <li><strong>Destination Manager:</strong> SaaS platform with real-time KPI dashboard, role-based access control, and tour route management — Angular 17, Laravel 11.</li>
+                            <li><strong>LEVJ:</strong> Artisan e-commerce with recurring customer recognition, product customizer, and WhatsApp payment flow — React, Netlify Functions.</li>
+                            <li><strong>LEMARJ:</strong> Project management app with Kanban boards, progress tracking, and conversational AI — React, TypeScript, shadcn/ui.</li>
+                        </ul>
+                        <p style="margin-top: 12px; font-size: 13px; color: var(--text-gray); font-style: italic;">📂
+                            All projects available on GitHub with complete documentation (README).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -431,3 +431,29 @@ applyLanguage = function() {
 };
 applyLanguage();
 
+
+// ─── CV LANGUAGE PICKER MODAL ────────────────────────────────────────────────
+function openCvModal() {
+  const modal = document.getElementById('cvModal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Apply current language to modal text elements
+  applyLanguage();
+}
+
+function closeCvModal(e) {
+  if (e && e.target !== document.getElementById('cvModal')) return;
+  document.getElementById('cvModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close CV modal with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const cvModal = document.getElementById('cvModal');
+    if (cvModal && cvModal.classList.contains('open')) {
+      cvModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+});

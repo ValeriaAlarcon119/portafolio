@@ -94,7 +94,7 @@
       </p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary" data-en="View my work" data-es="Ver mis proyectos">View my work</a>
-        <a href="CV - Valeria Alejandra 2026..pdf" download="CV_Valeria_Alarcon_2026.pdf" class="btn btn-ghost" data-en="Download Resume" data-es="Descargar CV">Download Resume</a>
+        <button onclick="openCvModal()" class="btn btn-ghost" data-en="Download Resume" data-es="Descargar CV">Download Resume</button>
       </div>
       <div class="hero-stats">
         <div class="stat-item">
@@ -1010,6 +1010,37 @@
             <div class="tech-pill"><span class="tech-layer">Payments</span> Nequi · Daviplata · WhatsApp</div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ CV LANGUAGE PICKER MODAL ═══════════════════════════════════════════ -->
+  <div class="cv-modal-backdrop" id="cvModal" onclick="closeCvModal(event)">
+    <div class="cv-modal-box" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle">
+      <button class="cv-modal-close" onclick="closeCvModal()" aria-label="Close">&#x2715;</button>
+      <div class="cv-modal-icon">&#128196;</div>
+      <h2 class="cv-modal-title" id="cvModalTitle"
+          data-en="Choose your language" data-es="Elige el idioma">Choose your language</h2>
+      <p class="cv-modal-subtitle"
+         data-en="Download my resume in your preferred language."
+         data-es="Descarga mi CV en el idioma que prefieras.">Download my resume in your preferred language.</p>
+      <div class="cv-modal-options">
+        <a href="CV - Valeria Alarcon - Systems Engineer.html"
+           download="CV_Valeria_Alarcon_EN.html"
+           class="cv-lang-btn cv-lang-en"
+           onclick="closeCvModal()">
+          <span class="cv-lang-flag">&#127482;&#127480;</span>
+          <span class="cv-lang-name">English</span>
+          <span class="cv-lang-desc" data-en="Systems Engineer" data-es="Systems Engineer">Systems Engineer</span>
+        </a>
+        <a href="CV - Valeria Alarcon - Ingeniera de Sistemas.html"
+           download="CV_Valeria_Alarcon_ES.html"
+           class="cv-lang-btn cv-lang-es"
+           onclick="closeCvModal()">
+          <span class="cv-lang-flag">&#127464;&#127476;</span>
+          <span class="cv-lang-name">Español</span>
+          <span class="cv-lang-desc" data-en="Ingeniera de Sistemas" data-es="Ingeniera de Sistemas">Ingeniera de Sistemas</span>
+        </a>
       </div>
     </div>
   </div>
