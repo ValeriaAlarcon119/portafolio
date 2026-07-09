@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Valeria Alejandra Alarcón Andrade</title>
+    <title>CV - Valeria Alejandra Alarcón Andrade · Ingeniera de Sistemas Full Stack</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
 
@@ -16,6 +16,7 @@
             --accent: #111111;
             --border-color: #eaeaea;
             --primary: #000000;
+            --highlight: #f5f5f5;
         }
 
         * {
@@ -43,7 +44,7 @@
             flex-direction: column;
         }
 
-        /* HEADER ELEGANCE */
+        /* HEADER */
         .header {
             background-color: #000000;
             padding: 55px 60px 35px 60px;
@@ -96,8 +97,9 @@
             align-items: center;
             gap: 6px;
         }
-        
-        .contact-item a:hover, .contact-item a:hover span {
+
+        .contact-item a:hover,
+        .contact-item a:hover span {
             color: #ffffff;
         }
 
@@ -206,6 +208,25 @@
             top: 7px;
         }
 
+        /* Keywords ATS section */
+        .keywords-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .keyword-tag {
+            background-color: #000000;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 3px;
+            letter-spacing: 0.3px;
+            line-height: 1.4;
+        }
+
         .cert-link {
             display: flex;
             align-items: center;
@@ -238,6 +259,15 @@
             position: relative;
         }
 
+        /* Highlight card for featured projects */
+        .experience-item.featured {
+            background-color: #fafafa;
+            border-left: 3px solid #000000;
+            border-radius: 0 6px 6px 0;
+            padding: 18px 20px;
+            margin-left: -20px;
+        }
+
         .exp-header {
             display: flex;
             align-items: center;
@@ -245,7 +275,7 @@
         }
 
         .arrow-icon {
-            display: none !important; /* Hide bulky generic icons */
+            display: none !important;
         }
 
         .exp-date {
@@ -287,13 +317,23 @@
             line-height: 1.7;
         }
 
-        .exp-tech {
-            font-size: 12.5px;
-            font-weight: 600;
-            color: var(--primary);
+        /* Tech tags — individual pill style */
+        .tech-tags {
             display: flex;
             gap: 6px;
             flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .tech-tag {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--primary);
+            background-color: var(--highlight);
+            border: 1px solid #e0e0e0;
+            padding: 3px 9px;
+            border-radius: 3px;
+            letter-spacing: 0.2px;
         }
 
         ul.exp-list {
@@ -304,15 +344,21 @@
         ul.exp-list li {
             font-size: 13.5px;
             color: var(--text-muted);
-            margin-bottom: 8px;
+            margin-bottom: 9px;
             padding-left: 5px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
-        
+
         ul.exp-list li::marker {
             color: #d0d0d0;
         }
-        
+
+        /* XYZ highlight inside bullets */
+        ul.exp-list li strong.result {
+            color: #000000;
+            font-weight: 600;
+        }
+
         .github-footer {
             margin-top: 40px;
             padding-top: 25px;
@@ -321,7 +367,7 @@
             font-size: 13px;
             color: var(--text-muted);
         }
-        
+
         .github-footer a {
             color: var(--primary);
             font-weight: 600;
@@ -337,33 +383,121 @@
 
         /* PRINT STYLES */
         @media print {
-            @page { margin: 0; size: A4; }
-            body { padding: 0; background: white; -webkit-print-color-adjust: exact; }
-            .cv-container { box-shadow: none; border-radius: 0; max-width: 100%; }
-            .header { padding: 35px 45px 25px 45px; }
-            .left-column { width: 32%; padding: 30px 25px; }
-            .right-column { width: 68%; padding: 30px 40px; }
-            .section { margin-bottom: 22px; }
-            .experience-item { margin-bottom: 20px; }
-            .profile-text, .exp-content, ul.exp-list li { font-size: 10.5px; line-height: 1.5; }
-            .exp-role { font-size: 15px; }
-            .exp-company, .edu-school { font-size: 12px; }
-            .exp-date, .edu-year { font-size: 9.5px; }
-            .exp-tech { font-size: 9px; }
-            .section-title { font-size: 11px; margin-bottom: 15px; }
-            .skills-list li { font-size: 10.5px; margin-bottom: 6px; }
-            .contact-item a { color: var(--text-muted) !important; }
+            @page {
+                margin: 0;
+                size: A4;
+            }
+
+            body {
+                padding: 0;
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+
+            .header {
+                padding: 30px 40px 20px 40px;
+            }
+
+            .header-info h1 {
+                font-size: 28px;
+            }
+
+            .header-info h2 {
+                font-size: 11px;
+            }
+
+            .left-column {
+                width: 32%;
+                padding: 25px 22px;
+            }
+
+            .right-column {
+                width: 68%;
+                padding: 25px 35px;
+            }
+
+            .section {
+                margin-bottom: 20px;
+            }
+
+            .experience-item {
+                margin-bottom: 18px;
+            }
+
+            .experience-item.featured {
+                padding: 12px 14px;
+                margin-left: -14px;
+            }
+
+            .profile-text,
+            .exp-content,
+            ul.exp-list li {
+                font-size: 10px;
+                line-height: 1.45;
+            }
+
+            .exp-role {
+                font-size: 14px;
+            }
+
+            .exp-company,
+            .edu-school {
+                font-size: 11px;
+            }
+
+            .exp-date,
+            .edu-year {
+                font-size: 9px;
+                padding: 2px 8px;
+            }
+
+            .tech-tag {
+                font-size: 8.5px;
+                padding: 2px 6px;
+            }
+
+            .keyword-tag {
+                font-size: 8px;
+                padding: 2px 5px;
+            }
+
+            .section-title {
+                font-size: 11px;
+                margin-bottom: 12px;
+            }
+
+            .skills-list li {
+                font-size: 10px;
+                margin-bottom: 5px;
+            }
+
+            .contact-item a {
+                color: var(--text-muted) !important;
+            }
+
+            .cert-link {
+                font-size: 9px;
+                padding: 6px 12px !important;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="cv-container">
-        <!-- ENCABEZADO SUPERIOR AZUL -->
+        <!-- ENCABEZADO -->
         <div class="header">
             <div class="header-info">
                 <h1>Valeria Alejandra Alarcón Andrade</h1>
-                <h2>Ingeniera de Sistemas</h2>
+                <h2>Ingeniera de Sistemas · Full Stack Developer · SaaS &amp; B2B</h2>
             </div>
             <div class="contact-grid">
                 <div class="contact-item" style="margin-bottom: 2px;">
@@ -428,11 +562,13 @@
                 <div class="section">
                     <h3 class="section-title">Perfil</h3>
                     <p class="profile-text">
-                        Ingeniera de Sistemas con experiencia en desarrollo de productos digitales escalables, arquitecturas móviles y soluciones Full Stack. Orientada a la seguridad, la trazabilidad y una experiencia de usuario de calidad.
+                        Ingeniera de Sistemas con más de 3 años construyendo productos digitales completos para clientes en Colombia, México y Estados Unidos.
                     </p>
-
                     <p class="profile-text">
-                        He trabajado en equipos ágiles internacionales, con comunicación directa con clientes y un enfoque constante en el impacto real del producto.
+                        Especializada en arquitecturas Full Stack seguras, integraciones de sistemas complejos y automatización de flujos empresariales. Domino React, NestJS, .NET Core y PostgreSQL.
+                    </p>
+                    <p class="profile-text">
+                        Trabajo con equipos ágiles internacionales y entrego soluciones de alta calidad de inicio a fin — desde la arquitectura hasta el despliegue en producción.
                     </p>
                 </div>
 
@@ -453,20 +589,39 @@
 
                     <div class="education-item">
                         <div class="edu-year">■ 2025 - Evolve Your English</div>
-                        <div class="edu-school">Inglés Intermedio</div>
+                        <div class="edu-school">Inglés Intermedio (B1)</div>
                     </div>
                 </div>
-
-
 
                 <div class="section">
                     <h3 class="section-title">Habilidades Técnicas</h3>
                     <ul class="skills-list">
                         <li><strong>Frontend:</strong> React 19, React Native (Expo), Angular 17+, Next.js, TypeScript, Tailwind CSS, shadcn/ui, Framer Motion.</li>
                         <li><strong>Backend:</strong> NestJS, Node.js (Express), Prisma ORM, Laravel 11, ASP.NET Core, REST APIs, JWT, RBAC.</li>
-                        <li><strong>Cloud & Infra:</strong> PostgreSQL (Supabase), Docker, AWS, Azure DevOps, Vercel, Render, Git/GitHub.</li>
-                        <li><strong>Arquitectura & IA:</strong> Arquitectura Hexagonal, Clean Architecture, OpenAI API, Máquina de Estados.</li>
+                        <li><strong>Cloud &amp; Infra:</strong> PostgreSQL (Supabase), Docker, AWS, Azure DevOps, Vercel, Render, Git/GitHub.</li>
+                        <li><strong>Arquitectura &amp; IA:</strong> Arquitectura Hexagonal, Clean Architecture, OpenAI API, Máquina de Estados, Microservicios.</li>
                     </ul>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Keywords ATS</h3>
+                    <div class="keywords-grid">
+                        <span class="keyword-tag">Full Stack Developer</span>
+                        <span class="keyword-tag">React.js / Next.js</span>
+                        <span class="keyword-tag">NestJS</span>
+                        <span class="keyword-tag">Node.js</span>
+                        <span class="keyword-tag">TypeScript</span>
+                        <span class="keyword-tag">PostgreSQL</span>
+                        <span class="keyword-tag">REST API Integration</span>
+                        <span class="keyword-tag">Clean Architecture</span>
+                        <span class="keyword-tag">Hexagonal Architecture</span>
+                        <span class="keyword-tag">CI/CD Pipeline</span>
+                        <span class="keyword-tag">Supabase RLS</span>
+                        <span class="keyword-tag">RBAC</span>
+                        <span class="keyword-tag">ASP.NET Core / C#</span>
+                        <span class="keyword-tag">Microservicios</span>
+                        <span class="keyword-tag">SaaS Product Development</span>
+                    </div>
                 </div>
 
                 <div class="section">
@@ -504,64 +659,62 @@
                 <div class="section">
                     <h3 class="section-title">Experiencia</h3>
 
-                    <!-- KeyGo -->
-                    <div class="experience-item">
+                    <!-- KeyGo — FEATURED -->
+                    <div class="experience-item featured">
                         <div class="exp-header">
                             <span class="arrow-icon">➔</span>
-                            <span class="exp-date">Febrero 2026 – Actualidad (Freelance / Manejo de Tiempos)</span>
+                            <span class="exp-date">Febrero 2026 – Actualidad · Freelance</span>
                         </div>
                         <div class="exp-company-row">
                             <span class="exp-role">Desarrolladora Full Stack</span>
-                            <span class="exp-company">KeyGo, Pasto, Colombia</span>
+                            <span class="exp-company">KeyGo · Pasto, Colombia</span>
                         </div>
                         <div class="exp-content">
                             <ul class="exp-list">
-                                <li>Desarrollé una plataforma para la custodia de activos físicos, integrando hardware con arquitectura cloud de alta disponibilidad.</li>
-                                <li>Implementé una arquitectura robusta (NestJS + React Native) con trazabilidad del ciclo de vida de los activos en tiempo real.</li>
-                                <li>Diseñé el modelo de datos relacional (Supabase/PostgreSQL) para soportar auditorías, históricos y pagos.</li>
-                                <li>Implementé un ecosistema de seguridad con autenticación multi-rol y cifrado avanzado.</li>
+                                <li>Construí una plataforma de custodia de activos físicos con trazabilidad total en tiempo real utilizando <strong class="result">NestJS + React Native + Supabase</strong>, creando un ecosistema seguro que integra hardware físico con backend cloud en alta disponibilidad.</li>
+                                <li>Protegí los datos sensibles de activos y pagos mediante <strong class="result">autenticación JWT multi-rol con cifrado avanzado y RBAC</strong>, garantizando un sistema apto para auditorías empresariales.</li>
+                                <li>Modelé un sistema relacional complejo de activos, historial y pagos con <strong class="result">PostgreSQL y Prisma ORM sobre Supabase</strong>, estableciendo una base de datos escalable preparada para reportes históricos y auditorías.</li>
                             </ul>
-                            <div class="exp-tech">Tecnologías: NestJS, React Native, Expo, Prisma ORM, PostgreSQL, JWT.</div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">NestJS</span>
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Expo</span>
+                            <span class="tech-tag">Prisma ORM</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">JWT · RBAC</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">Hardware Integration</span>
                         </div>
                     </div>
 
-                    <!-- Soleia -->
-                    <div class="experience-item">
+                    <!-- Grayola — FEATURED -->
+                    <div class="experience-item featured">
                         <div class="exp-header">
                             <span class="arrow-icon">➔</span>
-                            <span class="exp-date">Mayo 2025 – 25 de febrero de 2026 (Freelance)</span>
-                        </div>
-                        <div class="exp-company-row">
-                            <span class="exp-role">Desarrolladora Frontend</span>
-                            <span class="exp-company">Soleia, México</span>
-                        </div>
-                        <div class="exp-content">
-                            <ul class="exp-list">
-                                <li>Desarrollé una Landing Page y un Cotizador Interactivo de Lotes mediante manipulación de DOM con Vanilla JavaScript.</li>
-                                <li>Implementé un sistema de gestión de estados en tiempo real y optimicé el rendimiento web para lograr altos puntajes en métricas.</li>
-                                <li>Diseñé la arquitectura CSS responsiva, integrando captura y gestión de leads.</li>
-                            </ul>
-                            <div class="exp-tech">Tecnologías: Vanilla JS, SVG DOM, CSS3 (Mobile-First), WebP, Netlify, Performance Optimization.</div>
-                        </div>
-                    </div>
-
-                    <!-- Grayola -->
-                    <div class="experience-item">
-                        <div class="exp-header">
-                            <span class="arrow-icon">➔</span>
-                            <span class="exp-date">Noviembre 2025 - Diciembre 2025</span>
+                            <span class="exp-date">Noviembre 2025 – Diciembre 2025</span>
                         </div>
                         <div class="exp-company-row">
                             <span class="exp-role">Desarrolladora Full Stack</span>
-                            <span class="exp-company">Grayola, Estados Unidos</span>
+                            <span class="exp-company">Grayola · Estados Unidos</span>
                         </div>
                         <div class="exp-content">
                             <ul class="exp-list">
-                                <li>Desarrollé una plataforma de diseño como servicio (DaaS) con Next.js y TypeScript, integrando autenticación segura.</li>
-                                <li>Diseñé un flujo de Onboarding fluido e intuitivo para asegurar una gran experiencia a los usuarios.</li>
-                                <li>Implementé Dashboards con privacidad de datos mediante Supabase RLS y gestión documental de proyectos.</li>
+                                <li>Desarrollé una plataforma Design-as-a-Service (DaaS) funcional y escalable empleando <strong class="result">Next.js + TypeScript + Arquitectura Hexagonal</strong>, entregando una solución lista para producción que conecta clientes con diseñadores y ofrece gestión documental completa.</li>
+                                <li>Garanticé la privacidad de datos por rol sin complejidad adicional de backend gracias a <strong class="result">Supabase Row Level Security (RLS)</strong>, ofreciendo dashboards seguros donde cada usuario sólo ve su propia información.</li>
+                                <li>Aseguré la mantenibilidad a largo plazo del producto aplicando <strong class="result">Clean Architecture y patrones de diseño escalables</strong>, lo que resultó en un código modular, documentado y fácil de extender por cualquier equipo.</li>
                             </ul>
-                            <div class="exp-tech">Tecnologías: Next.js, TypeScript, Supabase RLS, Tailwind CSS, Shadcn/UI, PostgreSQL.</div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">NestJS</span>
+                            <span class="tech-tag">Supabase RLS</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">shadcn/ui</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Clean Architecture</span>
                         </div>
                     </div>
 
@@ -569,19 +722,27 @@
                     <div class="experience-item">
                         <div class="exp-header">
                             <span class="arrow-icon">➔</span>
-                            <span class="exp-date">Septiembre 2024 - Junio 2025</span>
+                            <span class="exp-date">Septiembre 2024 – Junio 2025</span>
                         </div>
                         <div class="exp-company-row">
                             <span class="exp-role">Desarrolladora Backend</span>
-                            <span class="exp-company">Black & Orange, México</span>
+                            <span class="exp-company">Black &amp; Orange · México</span>
                         </div>
                         <div class="exp-content">
                             <ul class="exp-list">
-                                <li>Integré ecosistemas CRM con infraestructuras cloud mediante el desarrollo de microservicios en Node.js y AWS.</li>
-                                <li>Sincronicé flujos de datos para clientes corporativos, automatizando procesos con Webhooks y APIs RESTful.</li>
-                                <li>Optimicé la arquitectura para soportar alta demanda de peticiones garantizando seguridad mediante OAuth2.</li>
+                                <li>Conecté el CRM corporativo con la infraestructura cloud desarrollando <strong class="result">microservicios en Node.js integrados con AWS y Oracle Cloud</strong>, logrando flujos de datos sincronizados automáticamente que eliminaron procesos manuales recurrentes.</li>
+                                <li>Escale la arquitectura de APIs para soportar alta demanda simultánea implementando <strong class="result">OAuth2 y Webhooks RESTful</strong>, asegurando un sistema estable bajo carga pico con seguridad empresarial garantizada.</li>
                             </ul>
-                            <div class="exp-tech">Tecnologías: Node.js, Express, HubSpot API, Oracle Cloud, AWS, Webhooks, RESTful APIs.</div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">HubSpot API</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Oracle Cloud</span>
+                            <span class="tech-tag">OAuth2</span>
+                            <span class="tech-tag">Webhooks</span>
+                            <span class="tech-tag">RESTful APIs</span>
                         </div>
                     </div>
 
@@ -589,19 +750,53 @@
                     <div class="experience-item">
                         <div class="exp-header">
                             <span class="arrow-icon">➔</span>
-                            <span class="exp-date">Marzo 2024 - Diciembre 2024</span>
+                            <span class="exp-date">Marzo 2024 – Diciembre 2024</span>
                         </div>
                         <div class="exp-company-row">
                             <span class="exp-role">Desarrolladora Full Stack</span>
-                            <span class="exp-company">SIIAN ERP, Pasto, Colombia</span>
+                            <span class="exp-company">SIIAN ERP · Pasto, Colombia</span>
                         </div>
                         <div class="exp-content">
                             <ul class="exp-list">
-                                <li>Desarrollé y optimicé módulos de Finanzas y Logística con .NET Core y PostgreSQL.</li>
-                                <li>Automaticé los flujos de CI/CD mediante Azure DevOps, acelerando las entregas del equipo.</li>
-                                <li>Modernicé la lógica empresarial del ERP para soportar mayores volúmenes de transacciones.</li>
+                                <li>Modernicé los módulos de Finanzas y Logística de un ERP empresarial utilizando <strong class="result">ASP.NET Core + C# + PostgreSQL</strong>, refactorizando la arquitectura para soportar mayores volúmenes de transacciones sin interrupciones.</li>
+                                <li>Aceleré el ciclo de entrega del equipo mediante <strong class="result">pipelines CI/CD automatizados en Azure DevOps</strong>, consiguiendo despliegues más rápidos y una reducción significativa de errores en producción.</li>
                             </ul>
-                            <div class="exp-tech">Tecnologías: ASP.NET Core, C#, Entity Framework, Dapper, PostgreSQL, Azure.</div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">ASP.NET Core</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">Entity Framework</span>
+                            <span class="tech-tag">Dapper</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Azure DevOps</span>
+                            <span class="tech-tag">CI/CD Pipeline</span>
+                        </div>
+                    </div>
+
+                    <!-- Soleia -->
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <span class="arrow-icon">➔</span>
+                            <span class="exp-date">Mayo 2025 – Febrero 2026 · Freelance</span>
+                        </div>
+                        <div class="exp-company-row">
+                            <span class="exp-role">Desarrolladora Frontend</span>
+                            <span class="exp-company">Soleia · México</span>
+                        </div>
+                        <div class="exp-content">
+                            <ul class="exp-list">
+                                <li>Programé una landing page de alto rendimiento con un cotizador interactivo de lotes utilizando <strong class="result">Vanilla JavaScript con manipulación de DOM y SVG</strong>, brindando una experiencia fluida que impulsa la captura de leads calificados para el equipo de ventas.</li>
+                                <li>Optimicé el rendimiento web a métricas de élite mediante el uso de <strong class="result">imágenes WebP, diseño Mobile-First y mejores prácticas SEO</strong>, alcanzando puntuaciones altas en Google Lighthouse que mejoran el posicionamiento orgánico.</li>
+                            </ul>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Vanilla JS</span>
+                            <span class="tech-tag">SVG DOM</span>
+                            <span class="tech-tag">CSS3 Mobile-First</span>
+                            <span class="tech-tag">WebP</span>
+                            <span class="tech-tag">Netlify</span>
+                            <span class="tech-tag">SEO</span>
+                            <span class="tech-tag">Performance Optimization</span>
                         </div>
                     </div>
 
@@ -609,18 +804,24 @@
                     <div class="experience-item">
                         <div class="exp-header">
                             <span class="arrow-icon">➔</span>
-                            <span class="exp-date">Julio 2023 - Enero 2024</span>
+                            <span class="exp-date">Julio 2023 – Enero 2024</span>
                         </div>
                         <div class="exp-company-row">
                             <span class="exp-role">Desarrolladora Full Stack</span>
-                            <span class="exp-company">TecnoPlanet, Pasto, Colombia</span>
+                            <span class="exp-company">TecnoPlanet · Pasto, Colombia</span>
                         </div>
                         <div class="exp-content">
                             <ul class="exp-list">
-                                <li>Desarrollé herramientas web para la optimización de procesos administrativos internos y gestión de inventarios.</li>
-                                <li>Construí y expandí APIs RESTful en diversos entornos (Django, Laravel, NestJS), garantizando la interoperabilidad.</li>
+                                <li>Construí y expandí APIs RESTful en múltiples frameworks (Django, Laravel, NestJS) garantizando interoperabilidad entre sistemas internos.</li>
+                                <li>Desarrollé herramientas web para la optimización de procesos administrativos e inventarios, reduciendo la dependencia de flujos manuales.</li>
                             </ul>
-                            <div class="exp-tech">Tecnologías: Django, Laravel, NestJS, Angular, MySQL.</div>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">NestJS</span>
+                            <span class="tech-tag">Angular</span>
+                            <span class="tech-tag">MySQL</span>
                         </div>
                     </div>
 
@@ -628,18 +829,48 @@
 
                 <div class="section">
                     <h3 class="section-title">Proyectos Destacados</h3>
+                    <!-- LEMARJ como producto SaaS propio en producción -->
+                    <div class="experience-item featured" style="margin-bottom: 28px;">
+                        <div class="exp-header">
+                            <span class="exp-date" style="background:#1a1a2e;">2025 – Actualidad · Producto Propio SaaS</span>
+                        </div>
+                        <div class="exp-company-row">
+                            <span class="exp-role">Co-fundadora &amp; Arquitecta de Software</span>
+                            <span class="exp-company">LEMARJ · Pasto, Colombia</span>
+                        </div>
+                        <div class="exp-content">
+                            <ul class="exp-list">
+                                <li>Construí la arquitectura core de un SaaS de ventas autónomas por WhatsApp con <strong class="result">IA regionalizada</strong> utilizando OpenAI API, WhatsApp Business API y React 19, desarrollando el producto completo desde el diseño hasta su despliegue funcional en producción.</li>
+                                <li>Diseñé un ecosistema multi-tenant escalable e integré con éxito el sistema a pasarelas de pago y plataformas (Stripe, Wompi, Meta Ads), estableciendo una infraestructura robusta lista para alta demanda.</li>
+                                <li>Estructuré la plataforma con estándares de seguridad listos para la Ley 1581 mediante <strong class="result">bases de datos cifradas (256-bit) y Row Level Security (RLS)</strong> en Supabase, asegurando la privacidad total de los datos transaccionales.</li>
+                            </ul>
+                        </div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React 19</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">OpenAI API</span>
+                            <span class="tech-tag">WhatsApp Business API</span>
+                            <span class="tech-tag">Stripe · Wompi</span>
+                            <span class="tech-tag">Meta Ads API</span>
+                            <span class="tech-tag">Docker · Vercel</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Ley 1581</span>
+                        </div>
+                    </div>
+
                     <div class="exp-content">
                         <ul class="exp-list">
                             <li><strong>EliteStream Pro v2.0:</strong> Plataforma de streaming con UI interactiva 3D, integración de datos dinámicos y autenticación segura — React 18, Framer Motion.</li>
                             <li><strong>Mallku:</strong> E-commerce con dashboard analítico, automatización de catálogos y procesamiento de imágenes — React 19, Node.js.</li>
-                            <li><strong>LEMARJ:</strong> Aplicación de gestión de proyectos con IA conversacional, tableros Kanban, RBAC y sincronización en tiempo real — React 19, TypeScript, Supabase.</li>
                             <li><strong>Gestión de Solicitudes:</strong> Plataforma empresarial con dashboard de analíticas y gestión de candidatos — Angular 17+, Laravel 11.</li>
                             <li><strong>Recuerdos Levj:</strong> E-commerce artesanal con personalización de productos y flujo de pago por WhatsApp — React 18, Zustand.</li>
                         </ul>
                         <p class="github-footer"
                             style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 8px; font-style: italic; color: #555;">
-                            📂 Todos los proyectos se encuentran desplegados y disponibles en GitHub con documentación
-                            completa (README).
+                            📂 Todos los proyectos están desplegados y disponibles en
+                            <a href="https://github.com/ValeriaAlarcon119" target="_blank">GitHub</a>
+                            con documentación completa (README).
                         </p>
                     </div>
                 </div>
