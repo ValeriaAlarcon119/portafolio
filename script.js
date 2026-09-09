@@ -3,17 +3,15 @@
 // ─── TYPED TEXT ───────────────────────────────────────────────────────────────
 const en_phrases = [
   "Systems Engineer",
-  "Mobile & Web Architecture",
-  "Full Stack Solutions Expert",
-  "Hardware & Software Integration",
-  "AI & UX Specialist"
+  "Web Architectures",
+  "Full Stack Developer",
+  "Hardware and software integrations"
 ];
 const es_phrases = [
-  "Ingeniera de Sistemas",
-  "Arquitecturas Móviles & Web",
-  "Experta en Soluciones Full Stack",
-  "Integración Hardware & Software",
-  "Especialista en IA & UX"
+  "Ingeniera de sistemas",
+  "Arquitecturas web",
+  "Desarrolladora full stack",
+  "Integraciones hardware y software"
 ];
 
 let phraseIndex = 0, charIndex = 0, isDeleting = false;
